@@ -1,0 +1,886 @@
+<!DOCTYPE html><html lang="id"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>TEMU — COFFEESHOP // CMS LEDGER (SYS.VER 2.4)</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&amp;display=swap" rel="stylesheet">
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-secondary-container": "#fffbff",
+            "surface": "#f0f0f0",
+            "on-surface-variant": "#4c4546",
+            "on-primary": "#ffffff",
+            "inverse-on-surface": "#f0f1f1",
+            "tertiary-fixed": "#e2e2e2",
+            "surface-container-high": "#e8e8e8",
+            "on-secondary": "#ffffff",
+            "on-surface": "#1a1c1c",
+            "tertiary-container": "#1b1b1b",
+            "ground": "#ffffff",
+            "on-secondary-fixed-variant": "#930000",
+            "on-error": "#ffffff",
+            "error": "#ba1a1a",
+            "outline": "#7e7576",
+            "signal-red": "#c90000",
+            "signal-blue": "#0047FF",
+            "ink": "#000000",
+            "tertiary-fixed-dim": "#c6c6c6",
+            "primary-fixed-dim": "#c6c6c6",
+            "inverse-surface": "#2f3131",
+            "surface-tint": "#5e5e5e",
+            "primary-container": "#1b1b1b",
+            "surface-dim": "#dadada",
+            "secondary": "#bc0000",
+            "on-tertiary-fixed-variant": "#474747",
+            "surface-container-low": "#f3f3f4",
+            "on-tertiary": "#ffffff",
+            "surface-variant": "#e2e2e2",
+            "secondary-fixed-dim": "#ffb4a8",
+            "primary": "#000000",
+            "on-secondary-fixed": "#410000",
+            "on-tertiary-container": "#848484",
+            "surface-container-highest": "#e2e2e2",
+            "on-tertiary-fixed": "#1b1b1b",
+            "on-error-container": "#93000a",
+            "tertiary": "#000000",
+            "primary-fixed": "#e2e2e2",
+            "on-primary-container": "#848484",
+            "on-primary-fixed": "#1b1b1b",
+            "outline-variant": "#cfc4c5",
+            "surface-container-lowest": "#ffffff",
+            "on-background": "#1a1c1c",
+            "surface-bright": "#f9f9f9",
+            "on-primary-fixed-variant": "#474747",
+            "inverse-primary": "#c6c6c6",
+            "background": "#f9f9f9",
+            "surface-container": "#eeeeee",
+            "secondary-fixed": "#ffdad4",
+            "secondary-container": "#e42114",
+            "error-container": "#ffdad6"
+          },
+          "borderRadius": {
+            "DEFAULT": "0px",
+            "lg": "0px",
+            "xl": "0px",
+            "full": "0px"
+          },
+          "spacing": {
+            "space-xs": "0.25rem",
+            "margin": "2rem",
+            "gutter": "1.5rem",
+            "gutter-mobile": "0.75rem",
+            "space-sm": "0.5rem",
+            "space-md": "1rem",
+            "space-lg": "1.5rem",
+            "space-xl": "2.5rem",
+            "margin-mobile": "1rem"
+          },
+          "fontFamily": {
+            "display-hero": ["Hanken Grotesk"],
+            "headline-lg-mobile": ["Hanken Grotesk"],
+            "display-hero-mobile": ["Hanken Grotesk"],
+            "body-md": ["Hanken Grotesk"],
+            "body-sm": ["Hanken Grotesk"],
+            "tag-mono": ["Hanken Grotesk"],
+            "headline-lg": ["Hanken Grotesk"],
+            "lead": ["Hanken Grotesk"],
+            "index-label": ["Hanken Grotesk"],
+            "metadata-bold": ["Hanken Grotesk"],
+            "headline-md": ["Hanken Grotesk"]
+          },
+          "fontSize": {
+            "display-hero": ["96px", { "lineHeight": "92px", "letterSpacing": "-0.04em", "fontWeight": "800" }],
+            "headline-lg-mobile": ["32px", { "lineHeight": "36px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "display-hero-mobile": ["48px", { "lineHeight": "48px", "letterSpacing": "-0.03em", "fontWeight": "800" }],
+            "body-md": ["16px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400" }],
+            "body-sm": ["14px", { "lineHeight": "20px", "letterSpacing": "0em", "fontWeight": "400" }],
+            "tag-mono": ["11px", { "lineHeight": "14px", "letterSpacing": "0.14em", "fontWeight": "700" }],
+            "headline-lg": ["48px", { "lineHeight": "52px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "lead": ["17px", { "lineHeight": "26px", "letterSpacing": "0em", "fontWeight": "400" }],
+            "index-label": ["12px", { "lineHeight": "16px", "letterSpacing": "0.12em", "fontWeight": "700" }],
+            "metadata-bold": ["14px", { "lineHeight": "20px", "letterSpacing": "0.02em", "fontWeight": "700" }],
+            "headline-md": ["24px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "700" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    * {
+      border-radius: 0 !important;
+      transition-duration: 0s !important;
+      -webkit-font-smoothing: antialiased;
+    }
+    .material-symbols-outlined {
+      font-size: 16px;
+      line-height: 1;
+      display: inline-block;
+      vertical-align: middle;
+    }
+    input, select, textarea, button {
+      border-radius: 0 !important;
+      box-shadow: none !important;
+    }
+    /* Calibration markings */
+    .calib-cross {
+      position: relative;
+    }
+    .calib-cross::before {
+      content: '+';
+      position: absolute;
+      font-family: monospace;
+      font-size: 10px;
+      color: #000;
+    }
+  </style>
+</head>
+<body class="bg-ground text-primary antialiased min-h-screen flex flex-col font-body-md text-body-md selection:bg-primary selection:text-ground" style="background-color: rgb(245, 242, 235);">
+<!-- 1. TOP HEADER / STATUS BAR -->
+<header class="w-full border-b-2 border-primary bg-ground sticky top-0 z-50" style="background-color: rgb(245, 242, 235);">
+<div class="w-full flex flex-col lg:flex-row items-stretch justify-between">
+<!-- Brand & Badge Section -->
+<div class="flex items-stretch border-b-2 lg:border-b-0 lg:border-r-2 border-primary">
+<div class="px-space-md py-space-sm flex items-center gap-space-sm border-r-2 border-primary bg-primary text-ground font-headline-md text-headline-md tracking-tight">
+<span class="w-2.5 h-2.5 bg-ground inline-block"></span>
+<span class="">TEMU</span>
+</div>
+<div class="px-space-md py-space-sm flex items-center gap-space-sm">
+<span class="font-metadata-bold text-metadata-bold tracking-tight">CMS LEDGER // ADMIN CONSOLE</span>
+<span class="px-1.5 py-0.5 border border-primary text-[10px] font-tag-mono font-bold bg-surface">SYS.VER 2.4</span>
+</div>
+</div>
+<!-- Center Metadata & Session Status -->
+<div class="flex items-center flex-wrap divide-x-2 divide-primary text-body-sm font-metadata-bold border-b-2 lg:border-b-0">
+<div class="px-space-md py-space-sm flex items-center gap-2">
+<span class="text-on-surface-variant font-tag-mono text-tag-mono">OPERATOR:</span>
+<span class="bg-surface px-1.5 py-0.5 border border-primary text-primary">BARISTA-ARCHIVIST #04</span>
+</div>
+<div class="px-space-md py-space-sm flex items-center gap-2">
+<span class="w-2 h-2 bg-[#0047FF] inline-block animate-pulse"></span>
+<span class="font-tag-mono text-tag-mono tracking-wider">DB SYNC: REALTIME NOMINAL</span>
+</div>
+<div class="px-space-md py-space-sm hidden sm:flex items-center gap-2 font-tag-mono text-tag-mono text-on-surface-variant">
+<span class="">LATENCY: 14MS</span>
+</div>
+</div>
+<!-- Navigation Exit Points -->
+<div class="flex items-stretch divide-x-2 divide-primary">
+<a class="px-space-md py-space-sm flex items-center gap-2 font-index-label text-index-label hover:bg-primary hover:text-ground transition-none" href="#public">
+<span class="">LIHAT WEB PUBLIK</span>
+<span class="material-symbols-outlined text-sm">north_east</span>
+</a>
+<button class="px-space-md py-space-sm flex items-center gap-1.5 font-index-label text-index-label text-signal-red hover:bg-signal-red hover:text-ground transition-none" type="button">
+<span class="material-symbols-outlined text-sm">logout</span>
+<span class="">LOGOUT</span>
+</button>
+</div>
+</div>
+</header>
+<!-- 2. 12-COLUMN MAIN WORKSPACE -->
+<div class="w-full flex-1 grid grid-cols-1 lg:grid-cols-12 border-b-2 border-primary">
+<!-- ========================================== -->
+<!-- KOLOM 1-3: PERSISTENT LEFT INDEX RAIL     -->
+<!-- ========================================== -->
+<aside class="lg:col-span-3 border-b-2 lg:border-b-0 lg:border-r-2 border-primary bg-ground flex flex-col justify-between" style="background-color: rgb(245, 242, 235);">
+<div>
+<!-- Rail Header Tag -->
+<div class="p-space-md border-b-2 border-primary bg-surface flex items-center justify-between" style="background-color: rgb(236, 229, 216);">
+<span class="font-tag-mono text-tag-mono tracking-widest text-primary">00 // INDEKS KERJA ADMIN</span>
+<span class="inline-block w-2 h-2 bg-primary"></span>
+</div>
+<!-- Navigation Stack -->
+<nav class="flex flex-col border-b-2 border-primary divide-y-2 divide-primary font-index-label text-index-label">
+<!-- Tab 01 Active -->
+<a class="p-space-md bg-primary text-ground flex items-center justify-between group" href="#menu-module">
+<div class="flex items-center gap-2.5">
+<span class="w-2.5 h-2.5 bg-[#0047FF] inline-block"></span>
+<span class="font-bold tracking-wider">01 // MANAJEMEN KATALOG MENU</span>
+</div>
+<span class="bg-ground text-primary px-1.5 py-0.5 text-tag-mono font-tag-mono">18</span>
+</a>
+<!-- Tab 02 -->
+<a class="p-space-md bg-ground text-primary hover:bg-surface flex items-center justify-between group transition-none" href="#historis-module">
+<div class="flex items-center gap-2.5">
+<span class="w-2.5 h-2.5 border border-primary inline-block"></span>
+<span class="font-medium tracking-wider">02 // DOKUMENTASI HISTORIS</span>
+</div>
+<span class="bg-surface text-primary px-1.5 py-0.5 text-tag-mono font-tag-mono border border-primary">6</span>
+</a>
+<!-- Tab 03 -->
+<a class="p-space-md bg-ground text-primary hover:bg-surface flex items-center justify-between group transition-none" href="#inventaris-stok">
+<div class="flex items-center gap-2.5">
+<span class="w-2.5 h-2.5 border border-primary inline-block"></span>
+<span class="font-medium tracking-wider">03 // INVENTARIS &amp; STOK BIJI</span>
+</div>
+<span class="bg-surface text-primary px-1.5 py-0.5 text-tag-mono font-tag-mono border border-primary">METRIK</span>
+</a>
+<!-- Tab 04 -->
+<a class="p-space-md bg-ground text-primary hover:bg-surface flex items-center justify-between group transition-none" href="#status-kedai">
+<div class="flex items-center gap-2.5">
+<span class="w-2.5 h-2.5 border border-primary inline-block"></span>
+<span class="font-medium tracking-wider">04 // PENGATURAN STATUS KEDAI</span>
+</div>
+<span class="px-1.5 py-0.5 bg-[#0047FF] text-ground font-tag-mono text-tag-mono">BUKA</span>
+</a>
+</nav>
+<!-- CTA Action in Rail -->
+<div class="p-space-md border-b-2 border-primary bg-surface-bright" style="background-color: rgb(236, 229, 216);">
+<button class="w-full py-3 px-space-md bg-primary text-ground font-metadata-bold text-metadata-bold tracking-wider hover:bg-surface hover:text-primary border-2 border-primary flex items-center justify-center gap-2 transition-none" type="button">
+<span class="material-symbols-outlined text-sm font-bold">add</span>
+<span class="">+ TAMBAH SAJIAN BARU</span>
+</button>
+</div>
+<!-- Quick Stats Ledger Box -->
+<div class="p-space-md border-b-2 border-primary bg-ground space-y-space-md" style="background-color: rgb(245, 242, 235);">
+<div class="flex items-center justify-between pb-1 border-b border-primary">
+<span class="font-tag-mono text-tag-mono tracking-widest text-on-surface-variant">RINGKASAN BUKU BESAR</span>
+<span class="text-[10px] font-tag-mono">LOG.OCT.25</span>
+</div>
+<div class="space-y-2 font-tag-mono text-tag-mono">
+<div class="flex justify-between items-center py-1 border-b border-surface-dim">
+<span class="text-on-surface-variant">TOTAL SAJIAN AKTIF:</span>
+<span class="font-bold text-primary bg-surface px-1.5 py-0.5 border border-primary">14 SAJIAN</span>
+</div>
+<div class="flex justify-between items-center py-1 border-b border-surface-dim">
+<span class="text-on-surface-variant">SAJIAN SOLD OUT:</span>
+<span class="font-bold text-signal-red bg-error-container/30 px-1.5 py-0.5 border border-primary">04 ITEM</span>
+</div>
+<div class="flex justify-between items-center py-1 border-b border-surface-dim">
+<span class="text-on-surface-variant">ARSIP PUBLIKASI:</span>
+<span class="font-bold text-primary">06 DOKUMEN</span>
+</div>
+<div class="flex justify-between items-center py-1">
+<span class="text-on-surface-variant">UPDATE TERAKHIR:</span>
+<span class="font-bold text-[#0047FF]">HARI INI 14:20 WIB</span>
+</div>
+</div>
+</div>
+<!-- System Architecture Metadata Box -->
+<div class="p-space-md font-body-sm text-body-sm space-y-2">
+<div class="text-[11px] font-tag-mono text-on-surface-variant uppercase tracking-wider">
+            KONFIGURASI PROTOKOL
+          </div>
+<p class="text-xs text-on-surface-variant leading-relaxed">
+            Perubahan basis data direkam secara permanen ke ledger historis kedai. Semua harga sudah termasuk PPN 11% &amp; service charge operasional barista.
+          </p>
+</div>
+</div>
+<!-- Rail Footer / Operator Lock -->
+<div class="p-space-md border-t-2 border-primary bg-surface text-tag-mono font-tag-mono flex items-center justify-between" style="background-color: rgb(236, 229, 216);">
+<span class="flex items-center gap-1.5">
+<span class="w-2 h-2 bg-primary"></span>
+<span class="">LEDGER LOCKED: NO DRIFT</span>
+</span>
+<span class="">ID: #9901-ID</span>
+</div>
+</aside>
+<!-- ========================================== -->
+<!-- KOLOM 4-12: MAIN WORKSPACE MATRIX         -->
+<!-- ========================================== -->
+<main class="lg:col-span-9 bg-ground flex flex-col" style="background-color: rgb(245, 242, 235);">
+<!-- Module 01 Header Banner -->
+<div class="border-b-2 border-primary bg-ground p-space-md lg:p-space-lg flex flex-col md:flex-row md:items-end justify-between gap-space-md" id="menu-module" style="background-color: rgb(245, 242, 235);">
+<div>
+<div class="flex items-center gap-2 mb-1">
+<span class="w-3 h-3 bg-[#0047FF] inline-block"></span>
+<span class="font-tag-mono text-tag-mono tracking-widest text-[#0047FF] uppercase">MODUL UTAMA AKTIF // ARSIP INVENTARIS</span>
+</div>
+<h1 class="font-headline-md text-headline-md tracking-tight uppercase">
+            01 / MODUL MANAJEMEN MENU &amp; SAJIAN
+          </h1>
+<p class="font-tag-mono text-tag-mono text-on-surface-variant mt-1 tracking-wider">
+            LEDGER ID: #TM-CMS-MENU-2025 // SISTEM INVENTARISASI PRESISE SWISS INTERNATIONAL
+          </p>
+</div>
+<div class="flex items-center gap-2 font-tag-mono text-tag-mono">
+<span class="px-2 py-1 bg-surface border border-primary">FORMAT DATA: JSON-LEDGER</span>
+<button class="px-3 py-1 bg-ground hover:bg-primary hover:text-ground border border-primary flex items-center gap-1 transition-none" type="button">
+<span class="material-symbols-outlined text-xs">download</span>
+<span class="">EKSPOR CSV</span>
+</button>
+</div>
+</div>
+<!-- Filter & Search Strip (Shared Border-Collapse Structure) -->
+<div class="border-b-2 border-primary bg-surface flex flex-col md:flex-row items-stretch" style="background-color: rgb(236, 229, 216);">
+<!-- Search Input with Monospace Bracket Indicator -->
+<div class="flex-1 flex items-stretch border-b-2 md:border-b-0 md:border-r-2 border-primary bg-ground">
+<div class="px-3.5 py-3 border-r-2 border-primary flex items-center justify-center bg-surface">
+<span class="material-symbols-outlined">search</span>
+</div>
+<input class="w-full px-space-md py-2.5 bg-ground text-primary placeholder-outline font-body-sm text-body-sm border-0 focus:ring-0 focus:bg-surface-bright" placeholder="[ CARI NAMA SAJIAN ATAU KODE BATCH... ]" type="text">
+</div>
+<!-- Filter Badges / Chips -->
+<div class="flex items-stretch overflow-x-auto divide-x-2 divide-primary font-index-label text-index-label">
+<button class="px-space-md py-3 bg-primary text-ground whitespace-nowrap flex items-center gap-2" type="button">
+<span class="w-2 h-2 bg-[#0047FF] inline-block"></span>
+<span class="">SEMUA (18)</span>
+</button>
+<button class="px-space-md py-3 bg-ground text-primary hover:bg-surface whitespace-nowrap transition-none" type="button">
+            SIGNATURE (4)
+          </button>
+<button class="px-space-md py-3 bg-ground text-primary hover:bg-surface whitespace-nowrap transition-none" type="button">
+            ESPRESSO (6)
+          </button>
+<button class="px-space-md py-3 bg-ground text-primary hover:bg-surface whitespace-nowrap transition-none" type="button">
+            MANUAL (4)
+          </button>
+<button class="px-space-md py-3 bg-ground text-primary hover:bg-surface whitespace-nowrap transition-none" type="button">
+            NON-COFFEE &amp; PASTRY (4)
+          </button>
+</div>
+</div>
+<!-- Interactive Input & Edit Panel (Modular Form Matrix) -->
+<div class="border-b-2 border-primary bg-surface-container-low" style="background-color: rgb(236, 229, 216);">
+<!-- Panel Accordion Bar -->
+<div class="px-space-md py-2.5 bg-surface border-b-2 border-primary flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">edit_note</span>
+<span class="font-tag-mono text-tag-mono tracking-widest uppercase font-bold">
+              FORMULIR INPUT / EDIT SAJIAN [ DOKUMEN BATCH BARU ]
+            </span>
+</div>
+<div class="flex items-center gap-2 font-tag-mono text-tag-mono text-on-surface-variant">
+<span class="">MODE: INPUT CEPAT</span>
+<span class="w-1.5 h-1.5 bg-primary"></span>
+</div>
+</div>
+<!-- 6-Field Matrix Form -->
+<form class="p-space-md lg:p-space-lg">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-space-md">
+<!-- Field 1: Nama Sajian (col-span-4) -->
+<div class="lg:col-span-4 flex flex-col gap-1.5">
+<label class="font-index-label text-index-label uppercase flex items-center justify-between">
+<span class="">01. NAMA SAJIAN</span>
+<span class="text-tag-mono text-on-surface-variant font-normal">[WAJIB]</span>
+</label>
+<input class="w-full px-space-md py-2.5 bg-surface border-2 border-primary font-metadata-bold text-metadata-bold focus:bg-ground focus:border-primary" type="text" value="KOPI SUSU TEMU">
+</div>
+<!-- Field 2: Kategori (col-span-3) -->
+<div class="lg:col-span-3 flex flex-col gap-1.5">
+<label class="font-index-label text-index-label uppercase flex items-center justify-between">
+<span class="">02. KATEGORI SAJIAN</span>
+<span class="text-tag-mono text-on-surface-variant font-normal">[KLASIFIKASI]</span>
+</label>
+<select class="w-full px-space-md py-2.5 bg-surface border-2 border-primary font-body-sm text-body-sm focus:bg-ground focus:border-primary">
+<option selected="">Signature House</option>
+<option>Espresso Based</option>
+<option>Manual Pourover / Filter</option>
+<option>Cold Extraction</option>
+<option>Pastry &amp; Bakeri</option>
+<option>Non-Coffee Alternative</option>
+</select>
+</div>
+<!-- Field 3: Harga IDR (col-span-2) -->
+<div class="lg:col-span-2 flex flex-col gap-1.5">
+<label class="font-index-label text-index-label uppercase flex items-center justify-between">
+<span class="">03. HARGA (NET)</span>
+<span class="text-tag-mono text-on-surface-variant font-normal">[IDR]</span>
+</label>
+<div class="relative flex items-center">
+<span class="absolute left-3 font-tag-mono text-xs font-bold text-on-surface-variant">RP</span>
+<input class="w-full pl-9 pr-3 py-2.5 bg-surface border-2 border-primary font-metadata-bold text-metadata-bold focus:bg-ground focus:border-primary text-right" type="text" value="28.000">
+</div>
+</div>
+<!-- Field 4: Status Ketersediaan Radio (col-span-3) -->
+<div class="lg:col-span-3 flex flex-col gap-1.5">
+<label class="font-index-label text-index-label uppercase">
+                04. STATUS KETERSEDIAAN
+              </label>
+<div class="grid grid-cols-2 gap-2 h-[46px]">
+<label class="flex items-center justify-center gap-2 border-2 border-primary bg-primary text-ground px-2 cursor-pointer font-index-label text-xs">
+<input checked="" class="hidden" name="stock_status" type="radio">
+<span class="w-2.5 h-2.5 bg-[#0047FF] inline-block"></span>
+<span class="">TERSEDIA</span>
+</label>
+<label class="flex items-center justify-center gap-2 border-2 border-primary bg-surface hover:bg-ground px-2 cursor-pointer font-index-label text-xs">
+<input class="hidden" name="stock_status" type="radio">
+<span class="w-2.5 h-2.5 border border-primary inline-block"></span>
+<span class="">SOLD OUT</span>
+</label>
+</div>
+</div>
+<!-- Field 5: Deskripsi / Profil Rasa (col-span-8) -->
+<div class="lg:col-span-8 flex flex-col gap-1.5">
+<label class="font-index-label text-index-label uppercase flex items-center justify-between">
+<span class="">05. DESKRIPSI TEKNIS &amp; PROFIL RASA</span>
+<span class="font-tag-mono text-tag-mono text-on-surface-variant">MAKS 160 KARAKTER</span>
+</label>
+<textarea class="w-full px-space-md py-2 bg-surface border-2 border-primary font-body-sm text-body-sm focus:bg-ground focus:border-primary resize-none" rows="3">Signature espresso house-blend (Arbica Gayo 70% / Robusta Temanggung 30%), reduksi gula aren organik cair, susu murni pasteurisasi dingin.</textarea>
+</div>
+<!-- Field 6: Foto Referensi Dropzone (col-span-4) -->
+<div class="lg:col-span-4 flex flex-col gap-1.5">
+<label class="font-index-label text-index-label uppercase flex items-center justify-between">
+<span class="">06. PRATINJAU DOKUMENTASI</span>
+<span class="font-tag-mono text-tag-mono text-on-surface-variant">1:1 MONOKROM</span>
+</label>
+<div class="border-2 border-dashed border-primary bg-surface p-2 flex items-center gap-space-md relative hover:bg-surface-bright cursor-pointer">
+<div class="w-16 h-16 border-2 border-primary bg-ground flex-shrink-0 relative overflow-hidden flex items-center justify-center">
+<img class="w-full h-full object-cover grayscale contrast-125" data-alt="Monochromatic Swiss style high-contrast product photography of an iced espresso coffee with distinct milk separation layers, shot inside a stark minimal studio on white matte concrete under pure directional light with intense black shadows." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCopjEODWmo2-TS8IGHm5WCPaBAxoD2xIYo4_hpMaxeEX58ndAlu0D9Gm31YTjs0F8wWRB-GlklnyNHg6VJJrSA1TzSSKcuFQb1DJlzXGPPqAOT0cQfudFYzX78MdiYe7hJUmTvTZDneUcaeaIAxUifv7MgBBXw1llaPDa584yJjMRAol7gb1RWwQC_VZUKB9ok-klz2fADjLyo2PE4oXzoMXY-VSVVCKJHMDKZZMo">
+<span class="absolute top-0 right-0 bg-primary text-ground text-[9px] px-1 font-tag-mono">RAW</span>
+</div>
+<div class="flex-1">
+<span class="font-tag-mono text-[11px] font-bold block text-primary">UPLOAD_TM01_FINAL.TIF</span>
+<span class="text-xs text-on-surface-variant font-body-sm block">1200x1200px • 300 DPI</span>
+<span class="text-[10px] text-[#0047FF] font-tag-mono underline uppercase font-bold mt-0.5 block">[ GANTI GAMBAR ]</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Form Buttons Action Strip -->
+<div class="mt-space-md pt-space-md border-t-2 border-primary flex flex-wrap items-center justify-between gap-space-md">
+<div class="flex items-center gap-2 font-tag-mono text-tag-mono text-on-surface-variant">
+<span class="w-2 h-2 bg-[#0047FF]"></span>
+<span class="">VALIDASI BATCH: TERVERIFIKASI TIDAK ADA KONFLIK KODE</span>
+</div>
+<div class="flex items-center gap-space-md">
+<button class="px-space-lg py-2.5 border-2 border-primary bg-ground hover:bg-surface font-index-label text-index-label uppercase tracking-wider transition-none" type="button">
+                BATALKAN
+              </button>
+<button class="px-space-xl py-2.5 border-2 border-primary bg-primary text-ground hover:bg-ground hover:text-primary font-index-label text-index-label uppercase tracking-wider flex items-center gap-2 transition-none" type="submit">
+<span class="w-2 h-2 bg-[#0047FF]"></span>
+<span class="">SIMPAN PERUBAHAN [CMD+S]</span>
+</button>
+</div>
+</div>
+</form>
+</div>
+<!-- ========================================== -->
+<!-- DATA TABLE / SWISS LEDGER ARCHIVE GRID     -->
+<!-- ========================================== -->
+<div class="border-b-2 border-primary bg-ground overflow-x-auto" style="background-color: rgb(245, 242, 235);">
+<table class="w-full text-left border-collapse">
+<!-- Table Header -->
+<thead>
+<tr class="border-b-2 border-primary bg-surface font-index-label text-index-label uppercase tracking-widest text-primary" style="background-color: rgb(236, 229, 216);">
+<th class="py-3 px-space-md border-r-2 border-primary w-24">KODE / ID</th>
+<th class="py-3 px-space-md border-r-2 border-primary w-20">PRATINJAU</th>
+<th class="py-3 px-space-md border-r-2 border-primary">NAMA SAJIAN &amp; KLASIFIKASI</th>
+<th class="py-3 px-space-md border-r-2 border-primary w-32">HARGA NETT</th>
+<th class="py-3 px-space-md border-r-2 border-primary w-40">STATUS STOK</th>
+<th class="py-3 px-space-md text-right w-52">AKSI CEPAT</th>
+</tr>
+</thead>
+<tbody class="divide-y-2 divide-primary font-body-sm text-body-sm">
+<!-- Row 1: TM-01 -->
+<tr class="hover:bg-surface-bright group transition-none">
+<td class="py-3 px-space-md border-r-2 border-primary font-tag-mono text-tag-mono font-bold">
+                TM-01
+              </td>
+<td class="py-2 px-space-md border-r-2 border-primary">
+<div class="w-12 h-12 border-2 border-primary bg-surface overflow-hidden">
+<img class="w-full h-full object-cover grayscale contrast-125" data-alt="Grayscale studio photo of an iced milk coffee in an unadorned tumbler glass on smooth black laboratory granite, sharp harsh studio lighting, extreme clarity, minimal aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDNjKe7QvmrTyKrUhKqKMIpZPzrpaHT_BGDwOnfFMLT6iGLr5wWusOV8hIl4lVTyOIgf_nC2MYSWDlJz0yNTMm2BloEvfnJn4s_Fc6wKRykqHOMM0OXJfhMWi_Seft01BvuQZTHVlUz-OSVRy-6QyOhVPWWqthU2hSubdiW8_l7nMSITq9MRe9yz7VbtQNzIcockGxsiYiYjPydRrY1oTmYNP2LLg7GkgID-AmOtwU">
+</div>
+</td>
+<td class="py-3 px-space-md border-r-2 border-primary">
+<div class="font-metadata-bold text-metadata-bold text-primary flex items-center gap-2">
+<span class="">KOPI SUSU TEMU</span>
+<span class="text-[10px] px-1.5 py-0.2 border border-primary bg-surface font-tag-mono uppercase">SIGNATURE</span>
+</div>
+<div class="text-xs text-on-surface-variant font-body-sm mt-0.5 line-clamp-1">
+                  Espresso Blend 70/30, gula aren organik, susu dingin pasteurisasi
+                </div>
+</td>
+<td class="py-3 px-space-md border-r-2 border-primary font-metadata-bold text-metadata-bold">
+                RP 28.000
+              </td>
+<td class="py-3 px-space-md border-r-2 border-primary">
+<span class="inline-flex items-center gap-1.5 px-2 py-0.5 border border-primary bg-ground text-primary font-tag-mono text-[11px] font-bold">
+<span class="w-2 h-2 bg-[#0047FF]"></span>
+<span class="">TERSEDIA</span>
+</span>
+</td>
+<td class="py-3 px-space-md text-right">
+<div class="inline-flex divide-x-2 divide-primary border-2 border-primary font-tag-mono text-[11px] font-bold">
+<button class="px-2 py-1 bg-ground hover:bg-primary hover:text-ground transition-none" type="button">EDIT</button>
+<button class="px-2 py-1 bg-ground hover:bg-primary hover:text-ground transition-none" type="button">TOGGLE</button>
+<button class="px-2 py-1 bg-ground hover:bg-signal-red hover:text-ground text-signal-red transition-none" type="button">HAPUS</button>
+</div>
+</td>
+</tr>
+<!-- Row 2: TM-02 -->
+<tr class="hover:bg-surface-bright group transition-none">
+<td class="py-3 px-space-md border-r-2 border-primary font-tag-mono text-tag-mono font-bold">
+                TM-02
+              </td>
+<td class="py-2 px-space-md border-r-2 border-primary">
+<div class="w-12 h-12 border-2 border-primary bg-surface overflow-hidden">
+<img class="w-full h-full object-cover grayscale contrast-125" data-alt="Monochrome overhead close-up of a precision pour-over dripper with black coffee swirling into a minimalist glass server, harsh laboratory light with crisp geometric shadows on white tile." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB_oAiOdSvj-Nm6KjQPMbKX9Qj0SuNdtAabFkMOSJ0cblhyg_41uMp2V8YG6dvOjitdv6c2BZQlpHpOSZ7nCfpfKtBjF0bsvUYttXE8ze_Tuw5XTiz9eEyG8kifgn470AyPTQuy3t1Js3dGZpgXgrrS2GsIAVtICbi9re6KD4oVY14GXc0rIyI0dblzBncxv9js__RM4iyXNH0jG8jpBD_pf1O5q9e894gKCjJhN34">
+</div>
+</td>
+<td class="py-3 px-space-md border-r-2 border-primary">
+<div class="font-metadata-bold text-metadata-bold text-primary flex items-center gap-2">
+<span class="">FILTER GEISHA</span>
+<span class="text-[10px] px-1.5 py-0.2 border border-primary bg-surface font-tag-mono uppercase">MANUAL POUROVER</span>
+</div>
+<div class="text-xs text-on-surface-variant font-body-sm mt-0.5 line-clamp-1">
+                  Panama Boquete Natural, notes: Jasmine, Bergamot, White Peach
+                </div>
+</td>
+<td class="py-3 px-space-md border-r-2 border-primary font-metadata-bold text-metadata-bold">
+                RP 45.000
+              </td>
+<td class="py-3 px-space-md border-r-2 border-primary">
+<span class="inline-flex items-center gap-1.5 px-2 py-0.5 border border-primary bg-ground text-primary font-tag-mono text-[11px] font-bold">
+<span class="w-2 h-2 bg-[#0047FF]"></span>
+<span class="">TERSEDIA</span>
+</span>
+</td>
+<td class="py-3 px-space-md text-right">
+<div class="inline-flex divide-x-2 divide-primary border-2 border-primary font-tag-mono text-[11px] font-bold">
+<button class="px-2 py-1 bg-ground hover:bg-primary hover:text-ground transition-none" type="button">EDIT</button>
+<button class="px-2 py-1 bg-ground hover:bg-primary hover:text-ground transition-none" type="button">TOGGLE</button>
+<button class="px-2 py-1 bg-ground hover:bg-signal-red hover:text-ground text-signal-red transition-none" type="button">HAPUS</button>
+</div>
+</td>
+</tr>
+<!-- Row 3: TM-03 -->
+<tr class="hover:bg-surface-bright group transition-none">
+<td class="py-3 px-space-md border-r-2 border-primary font-tag-mono text-tag-mono font-bold">
+                TM-03
+              </td>
+<td class="py-2 px-space-md border-r-2 border-primary">
+<div class="w-12 h-12 border-2 border-primary bg-surface overflow-hidden">
+<img class="w-full h-full object-cover grayscale contrast-125" data-alt="Black and white sharp side view of twin espresso ceramic demitasse cups resting on heavy stainless steel drip tray, precision steam and high tonal contrast with sharp focus." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBgnG_Azsjt_azSTAidHJKby44cneXONwo4ai97XSgmbtvk_gnAX4gY3tIk9NcYCvPqaA_keuCoREXTcqXs136EZAqRGZ8qNXmCwCwcPxor98LxTbRzrhr1USxEe-z73Dbp2OEwBaK7CPaF2gTYyZpZYpuQaG_hngZNNBB_5ogkhc_7qWp74bPv0t1LnPQPCDediVNUTLpZFT-CemZKIKaBQIQzFWi7rsh-5yM8G4s">
+</div>
+</td>
+<td class="py-3 px-space-md border-r-2 border-primary">
+<div class="font-metadata-bold text-metadata-bold text-primary flex items-center gap-2">
+<span class="">SPLIT SHOT ESPRESSO</span>
+<span class="text-[10px] px-1.5 py-0.2 border border-primary bg-surface font-tag-mono uppercase">ESPRESSO</span>
+</div>
+<div class="text-xs text-on-surface-variant font-body-sm mt-0.5 line-clamp-1">
+                  1x Single Origin Espresso Shot + 1x Piccolo Latte 90ml
+                </div>
+</td>
+<td class="py-3 px-space-md border-r-2 border-primary font-metadata-bold text-metadata-bold">
+                RP 32.000
+              </td>
+<td class="py-3 px-space-md border-r-2 border-primary">
+<span class="inline-flex items-center gap-1.5 px-2 py-0.5 border border-primary bg-ground text-primary font-tag-mono text-[11px] font-bold">
+<span class="w-2 h-2 bg-[#0047FF]"></span>
+<span class="">TERSEDIA</span>
+</span>
+</td>
+<td class="py-3 px-space-md text-right">
+<div class="inline-flex divide-x-2 divide-primary border-2 border-primary font-tag-mono text-[11px] font-bold">
+<button class="px-2 py-1 bg-ground hover:bg-primary hover:text-ground transition-none" type="button">EDIT</button>
+<button class="px-2 py-1 bg-ground hover:bg-primary hover:text-ground transition-none" type="button">TOGGLE</button>
+<button class="px-2 py-1 bg-ground hover:bg-signal-red hover:text-ground text-signal-red transition-none" type="button">HAPUS</button>
+</div>
+</td>
+</tr>
+<!-- Row 4: TM-04 -->
+<tr class="hover:bg-surface-bright group transition-none">
+<td class="py-3 px-space-md border-r-2 border-primary font-tag-mono text-tag-mono font-bold">
+                TM-04
+              </td>
+<td class="py-2 px-space-md border-r-2 border-primary">
+<div class="w-12 h-12 border-2 border-primary bg-surface overflow-hidden">
+<img class="w-full h-full object-cover grayscale contrast-125" data-alt="Grayscale aesthetic shot of amber archival medicine glass bottle filled with cold brew coffee, labeled with bold Swiss modernist typography on white paper stock." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB_RemLk2opurRbpGKdIFJby7T6_28caemjOD9AuNORV4--eYkSo-E1ua30aMqvnxHZGtmktCltuGds1iHobCeS5gObkcnH2fVaomc3AMv9zFpRmQKqOqBBWaHnPtLtK5aa81bS9pjeqru_gXL7b1HCWH-3tN0vo21Hz-KQ-Ey4933q4asPR12YHlFo-w7lRdSymONVO1qDrfOKJySUX_rtHTZFsCsndnzJN_NGM2s">
+</div>
+</td>
+<td class="py-3 px-space-md border-r-2 border-primary">
+<div class="font-metadata-bold text-metadata-bold text-primary flex items-center gap-2">
+<span class="">COLD DRIP 16H</span>
+<span class="text-[10px] px-1.5 py-0.2 border border-primary bg-surface font-tag-mono uppercase">COLD EXTRACTION</span>
+</div>
+<div class="text-xs text-on-surface-variant font-body-sm mt-0.5 line-clamp-1">
+                  Ekstraksi dingin tetes perlahan 16 jam, fermentasi botol tertutup
+                </div>
+</td>
+<td class="py-3 px-space-md border-r-2 border-primary font-metadata-bold text-metadata-bold">
+                RP 35.000
+              </td>
+<td class="py-3 px-space-md border-r-2 border-primary">
+<span class="inline-flex items-center gap-1.5 px-2 py-0.5 border border-primary bg-surface text-[#0047FF] font-tag-mono text-[11px] font-bold">
+<span class="w-2 h-2 bg-[#0047FF]"></span>
+<span class="">LIMITED: 12 BTL</span>
+</span>
+</td>
+<td class="py-3 px-space-md text-right">
+<div class="inline-flex divide-x-2 divide-primary border-2 border-primary font-tag-mono text-[11px] font-bold">
+<button class="px-2 py-1 bg-ground hover:bg-primary hover:text-ground transition-none" type="button">EDIT</button>
+<button class="px-2 py-1 bg-ground hover:bg-primary hover:text-ground transition-none" type="button">TOGGLE</button>
+<button class="px-2 py-1 bg-ground hover:bg-signal-red hover:text-ground text-signal-red transition-none" type="button">HAPUS</button>
+</div>
+</td>
+</tr>
+<!-- Row 5: TM-05 -->
+<tr class="hover:bg-surface-bright group transition-none">
+<td class="py-3 px-space-md border-r-2 border-primary font-tag-mono text-tag-mono font-bold">
+                TM-05
+              </td>
+<td class="py-2 px-space-md border-r-2 border-primary">
+<div class="w-12 h-12 border-2 border-primary bg-surface overflow-hidden">
+<img class="w-full h-full object-cover grayscale contrast-125" data-alt="Monochrome black and white macro architectural photograph of a flaky French pain au chocolat pastry sliced cleanly in half showing laminated internal honeycombed dough layers." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBTBGYHjpBCE39oRBdS4jBDpZGhpsS69hse5bwNsx7wsAKfnSaJOlDSoBNFl-8lRl2-Ht-h5Wu4c5P-whS1WZrPHyiRkWQCI_J7iJKJRzSoyQtOclcTG704qcB7DZcgXDJskLsAYgAxcZYuwVxE3M1GxzMe9_H2V5H-r1F_sX-EhlUqsBv0wpB0SfQ4sScYl2eP7JQqzbEL8ChzMHb9GE3hQ9slU329YWIS40NRScQ">
+</div>
+</td>
+<td class="py-3 px-space-md border-r-2 border-primary">
+<div class="font-metadata-bold text-metadata-bold text-primary flex items-center gap-2">
+<span class="">PAIN AU CHOCOLAT</span>
+<span class="text-[10px] px-1.5 py-0.2 border border-primary bg-surface font-tag-mono uppercase">PASTRY</span>
+</div>
+<div class="text-xs text-on-surface-variant font-body-sm mt-0.5 line-clamp-1">
+                  French butter lamination 48 jam, Valrhona dark chocolate batons 55%
+                </div>
+</td>
+<td class="py-3 px-space-md border-r-2 border-primary font-metadata-bold text-metadata-bold">
+                RP 26.000
+              </td>
+<td class="py-3 px-space-md border-r-2 border-primary">
+<span class="inline-flex items-center gap-1.5 px-2 py-0.5 border border-primary bg-ground text-primary font-tag-mono text-[11px] font-bold">
+<span class="w-2 h-2 bg-[#0047FF]"></span>
+<span class="">TERSEDIA</span>
+</span>
+</td>
+<td class="py-3 px-space-md text-right">
+<div class="inline-flex divide-x-2 divide-primary border-2 border-primary font-tag-mono text-[11px] font-bold">
+<button class="px-2 py-1 bg-ground hover:bg-primary hover:text-ground transition-none" type="button">EDIT</button>
+<button class="px-2 py-1 bg-ground hover:bg-primary hover:text-ground transition-none" type="button">TOGGLE</button>
+<button class="px-2 py-1 bg-ground hover:bg-signal-red hover:text-ground text-signal-red transition-none" type="button">HAPUS</button>
+</div>
+</td>
+</tr>
+<!-- Row 6: TM-06 (Sold Out State) -->
+<tr class="bg-surface/50 hover:bg-surface group transition-none">
+<td class="py-3 px-space-md border-r-2 border-primary font-tag-mono text-tag-mono text-on-surface-variant">
+                TM-06
+              </td>
+<td class="py-2 px-space-md border-r-2 border-primary opacity-60">
+<div class="w-12 h-12 border-2 border-primary bg-surface-dim overflow-hidden">
+<img class="w-full h-full object-cover grayscale contrast-125" data-alt="Grayscale studio overhead shot of handcrafted Japanese ceramic chawan tea bowl with dense ceremonial whisked matcha foam resting on textured architectural concrete." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD_nHN0c1I1rs6ogz9bhzFXsF9cUrvslWIDQBjdMSe6MSNUIJv0MD8oOW6OX2UOQNiJSdpFuUt37sCDs8lwBtUUKhi0K4Q4K2chWNxemFGTgtuiRhC2Ypibz8XZnhyE_vzOm2yxr2V7jowqq8SEPNatS2SNFJaRj7GnuTTsX4xHsZRU7-viYvl0nDmt2MQAk3ddJcAcczn9CwIEEBgr31NcsALNeA4vU1tKQbBHFrU">
+</div>
+</td>
+<td class="py-3 px-space-md border-r-2 border-primary opacity-75">
+<div class="font-metadata-bold text-metadata-bold text-primary flex items-center gap-2">
+<span class="line-through">MATCHA KYOTO</span>
+<span class="text-[10px] px-1.5 py-0.2 border border-primary bg-surface-variant font-tag-mono uppercase">NON-COFFEE</span>
+</div>
+<div class="text-xs text-on-surface-variant font-body-sm mt-0.5 line-clamp-1">
+                  Uji Ceremonial Grade Matcha, steamed fresh milk, cane sugar
+                </div>
+</td>
+<td class="py-3 px-space-md border-r-2 border-primary font-metadata-bold text-metadata-bold line-through text-on-surface-variant">
+                RP 30.000
+              </td>
+<td class="py-3 px-space-md border-r-2 border-primary">
+<span class="inline-flex items-center gap-1.5 px-2 py-0.5 border border-primary bg-surface-variant text-on-surface-variant font-tag-mono text-[11px] font-bold">
+<span class="w-2 h-2 bg-on-surface-variant"></span>
+<span class="">SOLD OUT</span>
+</span>
+</td>
+<td class="py-3 px-space-md text-right">
+<div class="inline-flex divide-x-2 divide-primary border-2 border-primary font-tag-mono text-[11px] font-bold">
+<button class="px-2 py-1 bg-primary text-ground hover:bg-ground hover:text-primary transition-none" type="button">RESTOCK</button>
+<button class="px-2 py-1 bg-ground hover:bg-primary hover:text-ground transition-none" type="button">EDIT</button>
+<button class="px-2 py-1 bg-ground hover:bg-signal-red hover:text-ground text-signal-red transition-none" type="button">HAPUS</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination / Ledger Row Counts -->
+<div class="p-space-md bg-surface border-b-2 border-primary flex flex-col sm:flex-row items-center justify-between gap-space-sm font-tag-mono text-tag-mono" style="background-color: #ECE5D8;">
+<div class="">
+          MENAMPILKAN <span class="font-bold text-primary">1 - 6</span> DARI TOTAL <span class="font-bold text-primary">18 SAJIAN</span>
+</div>
+<div class="flex items-center gap-1 border-2 border-primary bg-ground">
+<button class="px-2.5 py-1 border-r border-primary bg-surface font-bold" type="button">&lt;</button>
+<span class="px-3 py-1 font-bold bg-primary text-ground">01</span>
+<button class="px-3 py-1 hover:bg-surface border-l border-primary" type="button">02</button>
+<button class="px-3 py-1 hover:bg-surface border-l border-primary" type="button">03</button>
+<button class="px-2.5 py-1 border-l border-primary hover:bg-surface font-bold" type="button">&gt;</button>
+</div>
+</div>
+<!-- ========================================== -->
+<!-- SECTION 2: MODUL ARSIP HISTORIS & CERITA   -->
+<!-- ========================================== -->
+<div class="bg-ground flex flex-col" id="historis-module" style="background-color: rgb(245, 242, 235);">
+<!-- Module 02 Header Banner -->
+<div class="border-b-2 border-primary bg-surface p-space-md lg:p-space-lg flex flex-col md:flex-row md:items-end justify-between gap-space-md" style="background-color: rgb(236, 229, 216);">
+<div>
+<div class="flex items-center gap-2 mb-1">
+<span class="w-3 h-3 bg-primary inline-block"></span>
+<span class="font-tag-mono text-tag-mono tracking-widest text-primary uppercase">DOKUMENTASI PUBLIK &amp; PROVENANSI</span>
+</div>
+<h2 class="font-headline-md text-headline-md tracking-tight uppercase">
+              02 / MODUL MANAJEMEN ARSIP HISTORIS &amp; CERITA TEMU
+            </h2>
+<p class="font-tag-mono text-tag-mono text-on-surface-variant mt-1 tracking-wider">
+              MANAJEMEN KONTEN HISTORIS DOKUMENTER (3 ENTRI AKTIF DITAMPILKAN DI LANDING PAGE)
+            </p>
+</div>
+<button class="px-space-md py-2.5 bg-primary text-ground font-index-label text-index-label hover:bg-ground hover:text-primary border-2 border-primary flex items-center gap-2 transition-none" type="button">
+<span class="material-symbols-outlined text-sm">add</span>
+<span class="">+ TAMBAH DOKUMENTASI HISTORIS BARU</span>
+</button>
+</div>
+<!-- 3-Column Historical Editorial Card Grid -->
+<div class="grid grid-cols-1 md:grid-cols-3 divide-y-2 md:divide-y-0 md:divide-x-2 divide-primary border-b-2 border-primary">
+<!-- Item 1: 2021 -->
+<div class="flex flex-col justify-between bg-ground p-space-md">
+<div>
+<div class="flex items-center justify-between pb-2 border-b-2 border-primary font-tag-mono text-tag-mono mb-space-md">
+<span class="font-bold text-primary">2021 // EKSPEDISI PERTAMA</span>
+<span class="px-1.5 py-0.5 bg-[#0047FF] text-ground text-[10px]">TAMPIL</span>
+</div>
+<!-- Editorial Image Frame -->
+<div class="w-full aspect-[4/3] border-2 border-primary bg-surface overflow-hidden relative mb-space-md">
+<img class="w-full h-full object-cover grayscale contrast-150" data-alt="Black and white high-contrast documentary photo of specialty coffee farmers meticulously sorting red ripe cherries on raised drying beds in Aceh Gayo mountain landscape under intense midday sun." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCxlpJFKpakAXRBsodWbnhVLfYyw0EDxxNFNI0omLysRlxmTYOcry5fiXA9LOLnrWJF-ddmEuJYtdtqtd8hN_0FujMsqdvD6PYcZNfjFu1b--LvEc-PbCNqTzJO1T3PAWLPlUfRATKOsJQCfz4VeqtAWtW-gdQQ2lmLljcMAboDqUDwbeYOg5pB_mGPKZo1zpe7KhVUxON3fVMCoOlEaS3dUgerOZka-j9yyaowYrc">
+<span class="absolute bottom-1 left-1 bg-ground text-primary px-1.5 py-0.5 font-tag-mono text-[9px] border border-primary">
+                  FIG. 01 / GAYO
+                </span>
+</div>
+<h3 class="font-metadata-bold text-metadata-bold uppercase tracking-tight mb-2">
+                PENELUSURAN BIJI TUNGGAL &amp; STANDARISASI SANGRAI
+              </h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+                Membangun relasi langsung dengan petani mandiri di dataran tinggi Gayo dan Temanggung tanpa perantara komersial.
+              </p>
+</div>
+<div class="mt-space-lg pt-space-md border-t-2 border-primary flex items-center justify-between">
+<span class="font-tag-mono text-[10px] text-on-surface-variant uppercase">STATUS: PUBLISHED</span>
+<div class="inline-flex divide-x-2 divide-primary border-2 border-primary font-tag-mono text-xs font-bold">
+<button class="px-2 py-1 hover:bg-primary hover:text-ground transition-none" type="button">EDIT</button>
+<button class="px-2 py-1 hover:bg-primary hover:text-ground transition-none" type="button">ARSIPKAN</button>
+</div>
+</div>
+</div>
+<!-- Item 2: 2023 -->
+<div class="flex flex-col justify-between bg-ground p-space-md">
+<div>
+<div class="flex items-center justify-between pb-2 border-b-2 border-primary font-tag-mono text-tag-mono mb-space-md">
+<span class="font-bold text-primary">2023 // MERACIK RUANG BERSAMA</span>
+<span class="px-1.5 py-0.5 bg-[#0047FF] text-ground text-[10px]">TAMPIL</span>
+</div>
+<!-- Editorial Image Frame -->
+<div class="w-full aspect-[4/3] border-2 border-primary bg-surface overflow-hidden relative mb-space-md">
+<img class="w-full h-full object-cover grayscale contrast-150" data-alt="Monochrome architectural wide angle interior photo of a brutalist concrete coffee shop interior with raw geometric communal tables, stark glass partitions, and linear suspended industrial lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCM76kah5s-TeJz5rtcLCwHoFUvNoXzWMgBswy76ZKJh-qqg4ei9CVYwwo8D_KS0XeFxi_Vh-rbpY_LxtIQ_oDr5f-dgX4w6uWZwMx93_v1TnUg1efBD_Ea3WEGoI46B3rg-3PxSV0Ypvt9wPInR8k8qmRcBG8DebXE1DrCqC2Gf7pTG6_P-qM1fgZb8r47wIL4ImFeoRoBDcue8E4Vobr7gvvTqquBvI0bcDskNYU">
+<span class="absolute bottom-1 left-1 bg-ground text-primary px-1.5 py-0.5 font-tag-mono text-[9px] border border-primary">
+                  FIG. 02 / RUANG
+                </span>
+</div>
+<h3 class="font-metadata-bold text-metadata-bold uppercase tracking-tight mb-2">
+                ARSITEKTUR BRUTALIS SEBAGAI TEMPAT DISKUSI TERBUKA
+              </h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+                Membuka gerai pertama dengan konsep ruang komunal monokromatik tanpa dekorasi berlebih untuk fokus pada dialog rasa.
+              </p>
+</div>
+<div class="mt-space-lg pt-space-md border-t-2 border-primary flex items-center justify-between">
+<span class="font-tag-mono text-[10px] text-on-surface-variant uppercase">STATUS: PUBLISHED</span>
+<div class="inline-flex divide-x-2 divide-primary border-2 border-primary font-tag-mono text-xs font-bold">
+<button class="px-2 py-1 hover:bg-primary hover:text-ground transition-none" type="button">EDIT</button>
+<button class="px-2 py-1 hover:bg-primary hover:text-ground transition-none" type="button">ARSIPKAN</button>
+</div>
+</div>
+</div>
+<!-- Item 3: 2025 (Draft State) -->
+<div class="flex flex-col justify-between bg-surface-container-low p-space-md" style="background-color: rgb(236, 229, 216);">
+<div>
+<div class="flex items-center justify-between pb-2 border-b-2 border-primary font-tag-mono text-tag-mono mb-space-md">
+<span class="font-bold text-primary">2025 // STATUS SEKARANG</span>
+<span class="px-1.5 py-0.5 bg-surface-dim border border-primary text-primary text-[10px]">DRAF BARU</span>
+</div>
+<!-- Editorial Image Frame -->
+<div class="w-full aspect-[4/3] border-2 border-dashed border-primary bg-surface flex flex-col items-center justify-center relative mb-space-md text-center p-space-md">
+<span class="material-symbols-outlined text-2xl text-on-surface-variant mb-1">add_photo_alternate</span>
+<span class="font-tag-mono text-tag-mono uppercase text-on-surface-variant">[ DOKUMEN BELUM DIUNGGAH ]</span>
+<span class="text-[10px] text-on-surface-variant font-body-sm mt-1">Rekomendasi rasio 4:3 hitam putih</span>
+</div>
+<h3 class="font-metadata-bold text-metadata-bold uppercase tracking-tight mb-2">
+                TRANSPARANSI PROVENANSI 100% TERBUKA
+              </h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+                Penerapan kode batch digital pada setiap cangkir untuk melihat nama roaster, tanggal roast, dan data refractometer TDS.
+              </p>
+</div>
+<div class="mt-space-lg pt-space-md border-t-2 border-primary flex items-center justify-between">
+<span class="font-tag-mono text-[10px] text-signal-red uppercase font-bold">STATUS: DRAF TERBARU</span>
+<div class="inline-flex divide-x-2 divide-primary border-2 border-primary font-tag-mono text-xs font-bold">
+<button class="px-2 py-1 bg-primary text-ground hover:bg-ground hover:text-primary transition-none" type="button">PUBLIKASIKAN</button>
+<button class="px-2 py-1 hover:bg-primary hover:text-ground transition-none" type="button">EDIT</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+<!-- 4. FOOTER LEDGER -->
+<footer class="w-full border-t-2 border-primary bg-ground text-primary" style="background-color: rgb(245, 242, 235);">
+<div class="w-full grid grid-cols-1 md:grid-cols-12 divide-y-2 md:divide-y-0 md:divide-x-2 divide-primary">
+<!-- Brand & Version -->
+<div class="md:col-span-4 p-space-md flex flex-col justify-between">
+<div class="flex items-center gap-2">
+<span class="font-headline-md text-headline-md tracking-tight font-bold">TEMU // CMS LEDGER</span>
+<span class="px-1.5 py-0.5 border border-primary text-[10px] font-tag-mono">V2.4</span>
+</div>
+<p class="text-xs text-on-surface-variant font-body-sm mt-2">
+          Sistem manajemen inventarisasi presisi terpusat mengikuti kaidah Swiss International Typographic Style. Bebas ornamen.
+        </p>
+</div>
+<!-- Live Ledger Metrics -->
+<div class="md:col-span-4 p-space-md font-tag-mono text-tag-mono space-y-1">
+<div class="text-on-surface-variant uppercase tracking-wider text-[10px]">STATUS SERVER &amp; METRIK BASIS DATA:</div>
+<div class="flex justify-between">
+<span class="">STATUS PROTOKOL:</span>
+<span class="font-bold text-[#0047FF]">ONLINE (NOMINAL)</span>
+</div>
+<div class="flex justify-between">
+<span class="">TERAKHIR SYNC:</span>
+<span class="font-bold">2025-10-24 14:20:18 WIB</span>
+</div>
+<div class="flex justify-between">
+<span class="">RESPONS SERVER:</span>
+<span class="font-bold">14 MS [OK]</span>
+</div>
+</div>
+<!-- Legal & Copyright Ledger -->
+<div class="md:col-span-4 p-space-md flex flex-col justify-between font-tag-mono text-tag-mono">
+<div class="flex flex-wrap gap-x-space-md gap-y-1 text-[11px] text-on-surface-variant">
+<a class="hover:text-primary underline" href="#terms">TERMS / METRICS</a>
+<a class="hover:text-primary underline" href="#docs">DOKUMENTASI API</a>
+<a class="hover:text-primary underline" href="#audit">AUDIT LOG</a>
+<a class="hover:text-primary underline" href="#colophon">KOLOFON</a>
+</div>
+<div class="mt-4 text-[10px] text-on-surface-variant">
+          © 2025 TEMU COFFEE PROTOCOL. REPRODUKSI TANPA IZIN DILARANG. HAK CIPTA DILINDUNGI SISTEM LEDGER.
+        </div>
+</div>
+</div>
+</footer>
+<!-- Micro-interactions Script (Pure Vanilla, Zero-lag) -->
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Instant action confirmations
+      const buttons = document.querySelectorAll('button');
+      buttons.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          const originalText = btn.innerText;
+          if (btn.innerText.includes('SIMPAN') || btn.innerText.includes('RESTOCK') || btn.innerText.includes('PUBLIKASIKAN')) {
+            const originalHtml = btn.innerHTML;
+            btn.innerHTML = `<span class="w-2 h-2 bg-[#0047FF]"></span> <span>BERHASIL DIPERBARUI</span>`;
+            setTimeout(() => {
+              btn.innerHTML = originalHtml;
+            }, 1200);
+          }
+        });
+      });
+    });
+  </script>
+
+
+</body></html>

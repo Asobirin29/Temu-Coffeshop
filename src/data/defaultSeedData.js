@@ -7,164 +7,259 @@ function createEditorialSvg(label, subtitle, ratio = "1/1") {
     <line x1="0" y1="0" x2="${width}" y2="${height}" stroke="#333333" stroke-width="2"/>
     <line x1="${width}" y1="0" x2="0" y2="${height}" stroke="#333333" stroke-width="2"/>
     <rect x="20" y="20" width="${width - 40}" height="${height - 40}" fill="none" stroke="#666666" stroke-width="2"/>
-    <text x="50%" y="46%" font-family="Arial, sans-serif" font-weight="900" font-size="28" fill="#ffffff" text-anchor="middle" letter-spacing="2">${label.toUpperCase()}</text>
-    <text x="50%" y="54%" font-family="Arial, sans-serif" font-weight="400" font-size="14" fill="#aaaaaa" text-anchor="middle" letter-spacing="3">${subtitle.toUpperCase()}</text>
-    <rect x="${width / 2 - 40}" y="${height - 60}" width="80" height="24" fill="#004de6"/>
-    <text x="50%" y="${height - 44}" font-family="Arial, sans-serif" font-weight="700" font-size="11" fill="#ffffff" text-anchor="middle" letter-spacing="1">TEMU // ARCHIVE</text>
+    <text x="50%" y="46%" font-family="'Hanken Grotesk', Arial, sans-serif" font-weight="900" font-size="28" fill="#ffffff" text-anchor="middle" letter-spacing="2">${label.toUpperCase()}</text>
+    <text x="50%" y="54%" font-family="'Hanken Grotesk', Arial, sans-serif" font-weight="400" font-size="14" fill="#aaaaaa" text-anchor="middle" letter-spacing="3">${subtitle.toUpperCase()}</text>
+    <rect x="${width / 2 - 40}" y="${height - 60}" width="80" height="24" fill="#0047FF"/>
+    <text x="50%" y="${height - 44}" font-family="'Hanken Grotesk', Arial, sans-serif" font-weight="700" font-size="11" fill="#ffffff" text-anchor="middle" letter-spacing="1">TEMU // ARCHIVE</text>
   </svg>`;
   return `data:image/svg+xml;utf8,${encodeURIComponent(svg)}`;
 }
 
 export const DEFAULT_INFO = {
   name: "TEMU — COFFEESHOP",
-  tagline: "RUANG TEMU, ARSIP KOPI, DAN CATATAN WAKTU.",
-  heroSectionTag: "00 // PENDAHULUAN & FILOSOFI",
-  heroTitle: "RUANG TEMU, ARSIP KOPI.",
-  heroLead: "Temu-Coffeeshop adalah laboratorium rasa dan ruang terbuka yang dirancang dengan presisi editorial Swiss. Setiap cangkir diproses melalui disiplin sangrai ketat dan disajikan sebagai medium dialog tanpa distraksi visual berlebihan.",
-  heroImageUrl: "https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&w=1600&q=80",
-  heroImageCaption: "ARSIP VISUAL 01 // INTERIOR RUANG SEDUH UTAMA",
-  
+  tagline: "RUANG TEMU, SECANGKIR ARSIP & PERCAKAPAN.",
+  editionTag: "EDISI 2025",
+  systemVersion: "SYS.VER 2.4",
+
+  // Hero Editorial
+  heroSectionTag: "ARSIP PROTOKOL KOPI // SENOPATI",
+  catalogId: "CATALOG ID: #TM-2025",
+  heroTitle: "RUANG TEMU, SECANGKIR ARSIP & PERCAKAPAN.",
+  heroLead: "Temu-Coffeeshop adalah laboratorium rasa dan ruang terbuka yang memadukan presisi ekstraksi Swiss dengan kekayaan biji kopi nusantara.",
+  heroImageUrl: "/images/hero-slide-01.jpg",
+  heroImageCaption: "FIG. 01 // INTERIOR RUANG SEDUH UTAMA & MEJA KOMUNAL",
+
   // Status Kedai & Jam Operasional
   isOpen: true,
-  statusText: "SEDANG BUKA",
-  statusClosedText: "TUTUP SEMENTARA",
-  statusNote: "Disangrai segar tiap pagi. Melayani seduhan manual dan espresso bar.",
+  statusText: "SEDANG BUKA (OPEN)",
+  statusClosedText: "TUTUP SEMENTARA (CLOSED)",
+  statusLiveText: "LIVE: OPEN UNTIL 22:00",
+  statusNote: "Pengarsipan profil sangrai berkala untuk menjaga kurva degradasi termal dan puncak keasaman alami.",
   openingHours: "07:00 — 22:00 WIB",
   openingDays: "Senin sampai Minggu tanpa libur",
-  
-  // Alamat & Lokasi
-  address: "Jl. Senopati No. 42, Kebayoran Baru, Jakarta Selatan 12190",
+  openingHoursWeekday: "SENIN — JUMAT: 07:00 – 22:00",
+  openingHoursWeekend: "SABTU — MINGGU: 08:00 – 23:00",
+  lastOrderNote: "LAST ORDER: 30 MENIT SEBELUM TUTUP PROTOKOL",
+
+  // Alamat & Koordinat
+  address: "JL. SENOPATI NO. 42",
+  addressDetail: "KEBAYORAN BARU, JAKARTA SELATAN 12190",
   locationArea: "KEBAYORAN BARU, JAKARTA SELATAN",
   locationShort: "Jl. Senopati No. 42",
+  addressBenchmark: "PATOKAN: 200 meter dari bundaran Senopati, bangunan beton brutalist sudut timur",
+  coordinates: `6°14'02.1"S 106°48'33.2"E`,
+  elevation: "ELEVASI: 18M DPL / SUB-DISTRIK SENOPATI",
+  locationNote: "Temu berlokasi strategis di area Senopati dengan fasilitas parkir kendaraan dan ramah pesepeda.",
   locationSectionTag: "03 / LOKASI & PERSINGGAHAN",
   locationTitle: "SINGGAH DAN MULAI PERCAKAPAN.",
-  locationLead: "Kami menyediakan bangku-bangku kayu panjang, stopkontak terintegrasi, dan atmosfer yang hening untuk Anda yang ingin membaca, menulis, atau sekadar menikmati waktu senggang.",
-  locationNote: "Temu berlokasi strategis di area Senopati dengan fasilitas parkir kendaraan dan ramah pesepeda.",
-  
+  locationLead: "Kami menyediakan bangku-bangku kayu panjang dan meja beton monokrom untuk pertukaran ide yang cair tanpa distraksi.",
+  capacityOccupied: 24,
+  capacityTotal: 36,
+
+  // Fasilitas
+  bicycleParking: "PARKIR SEPEDA: TERSEDIA (4 RAK)",
+  networkSpeed: "KONEKSI JARINGAN: 100 MBPS FIBER",
+
   // Kontak & Tautan
   googleMapsUrl: "https://maps.google.com/?q=Senopati+Jakarta",
   whatsappUrl: "https://wa.me/6281234567890?text=Halo%20Temu-Coffeeshop,%20saya%20ingin%20bertanya",
   instagram: "@temu.coffeeshop"
 };
 
+export const DEFAULT_HERO_SLIDES = [
+  {
+    id: "slide-01",
+    indexLabel: "01",
+    indicatorText: "01 / 03",
+    caption: "FIG 0.1 // BAR UTAMA & MEJA KALIBRASI ESPRESSO",
+    time: "[ 08:00 WIB ]",
+    tag: "00 // MANIFESTO KEDAI",
+    manifesto: "Kami mereduksi ritual minum kopi ke substansi paling murni: ketepatan ekstraksi, kurasi biji tunggal yang terverifikasi, dan ruangan terstruktur tanpa ornamen berlebih. Tempat di mana ide dan diskursus urban bertaut.",
+    metrics: [
+      "STATUS SUHU AIR: 93.4°C NOMINAL",
+      "TEKANAN EKSTRAKSI: 9.0 BAR KONSTAN",
+      "RASIO SEDUH HARIAN: 1:15.5 GEISHA ARCHIVE"
+    ],
+    imageUrl: "/images/hero-slide-01.jpg",
+    alt: "Monochromatic high-contrast editorial photograph showing a minimalist concrete espresso bar with a sleek precision espresso machine and stainless steel brew tools."
+  },
+  {
+    id: "slide-02",
+    indexLabel: "02",
+    indicatorText: "02 / 03",
+    caption: "FIG 0.2 // PROTOKOL KALIBRASI SEDUH MANUAL & UJI TDS",
+    time: "[ 09:30 WIB ]",
+    tag: "02 // PROTOKOL SEDUH & EKSTRAKSI",
+    manifesto: "Eksplorasi variabel seduh mikro: kontrol suhu bertahap, rasio kelarutan terukur (TDS 1.35%), dan kalibrasi gilingan harian untuk mengekstraksi spektrum rasa origin secara utuh tanpa kompromi.",
+    metrics: [
+      "STATUS SUHU AIR: 92.5°C ADAPTIF",
+      "TEKANAN / ALIRAN: 4.8 ML/DETIK (POUR-OVER RATE)",
+      "RASIO SEDUH HARIAN: 1:16.0 ETHIOPIA YIRGACHEFFE"
+    ],
+    imageUrl: "/images/hero-slide-02.jpg",
+    alt: "Specialty coffee barista pour-over brewing station with glass drippers, precision scales, kettle, minimalist clean architectural concrete counter."
+  },
+  {
+    id: "slide-03",
+    indexLabel: "03",
+    indicatorText: "03 / 03",
+    caption: "FIG 0.3 // LABORATORIUM SANGRAI & UJI SENSORIK CUPPING",
+    time: "[ 14:00 WIB ]",
+    tag: "03 // RISET SANGRAI & ARSIP SENSORIK",
+    manifesto: "Pengarsipan profil sangrai berkala untuk menjaga kurva degradasi termal dan puncak keasaman alami. Setiap lot biji tunggal menjalani uji cupping standar SCA minimal 3 kali sebelum dirilis ke bar seduh.",
+    metrics: [
+      "STATUS SUHU DRUM: 204.0°C FIRST CRACK PEAK",
+      "WAKTU DEVELOPMENT (DTR): 14.2% ROAST RATIO",
+      "SKOR SENSORIK RATA-RATA: 88.75 PTS (SPECIALTY GRADE)"
+    ],
+    imageUrl: "/images/hero-slide-03.jpg",
+    alt: "Monochrome grayscale editorial photography of a modern minimalist coffee roasting laboratory and archive, specialty coffee cupping table."
+  }
+];
+
 export const DEFAULT_MENU_ITEMS = [
   {
     id: "menu-01",
-    name: "Temu Klasik Aren",
+    code: "TM-01",
+    name: "KOPI SUSU TEMU",
     category: "SIGNATURE",
     price: 28000,
-    caption: "Racikan espresso ganda Flores Bajawa, gula aren murni organik, dan susu segar bertekstur kental manis lembut.",
-    image_url: createEditorialSvg("Temu Klasik Aren", "Signature Cold", "1/1"),
+    caption: "Espresso Blend 70/30, gula aren organik cair, susu dingin pasteurisasi",
+    images: ["/images/admin-tm01.jpg", "/images/admin-form-upload.jpg"],
+    image_url: "/images/admin-tm01.jpg",
     is_available: true,
     is_featured: true
   },
   {
     id: "menu-02",
-    name: "Nitro Cold Brew Citrus",
-    category: "SIGNATURE",
-    price: 32000,
-    caption: "Ekstraksi dingin 18 jam dengan infusi nitrogen mikro. Profil rasa sitrus jernih dengan buih krem tebal.",
-    image_url: createEditorialSvg("Nitro Cold Brew", "18-Hour Brew", "1/1"),
+    code: "TM-02",
+    name: "FILTER GEISHA",
+    category: "MANUAL",
+    price: 45000,
+    caption: "Panama Boquete Natural, notes: Jasmine, Bergamot, White Peach",
+    images: ["/images/admin-tm02.jpg", "/images/hero-slide-03.jpg"],
+    image_url: "/images/admin-tm02.jpg",
     is_available: true,
     is_featured: true
   },
   {
     id: "menu-03",
-    name: "Susu Gandum Kayu Manis",
-    category: "SIGNATURE",
-    price: 30000,
-    caption: "Kombinasi oat milk panggang, rempah kayu manis Sumatera, dan satu seloki espresso pekat.",
-    image_url: createEditorialSvg("Susu Gandum Kayu Manis", "Oat Cinnamon", "1/1"),
+    code: "TM-03",
+    name: "SPLIT SHOT ESPRESSO",
+    category: "ESPRESSO",
+    price: 32000,
+    caption: "1x Single Origin Espresso Shot + 1x Piccolo Latte 90ml",
+    images: ["/images/admin-tm03.jpg", "/images/hero-slide-01.jpg"],
+    image_url: "/images/admin-tm03.jpg",
     is_available: true,
     is_featured: false
   },
   {
     id: "menu-04",
-    name: "Double Espresso",
-    category: "ESPRESSO BASED",
-    price: 22000,
-    caption: "Ekstraksi rasio 1:2 dari biji kopi arabika Gayo anaerobik. Catatan rasa kakao pekat dan sentuhan kismis.",
-    image_url: createEditorialSvg("Double Espresso", "Gayo Anaerobic", "1/1"),
+    code: "TM-04",
+    name: "COLD DRIP 16H",
+    category: "COLD EXTRACTION",
+    price: 35000,
+    caption: "Ekstraksi dingin tetes perlahan 16 jam, fermentasi botol tertutup",
+    images: ["/images/admin-tm04.jpg", "/images/admin-tm06.jpg"],
+    image_url: "/images/admin-tm04.jpg",
     is_available: true,
-    is_featured: false
+    is_featured: true,
+    limited_note: "LIMITED: 12 BTL"
   },
   {
     id: "menu-05",
-    name: "Americano Klasik",
-    category: "ESPRESSO BASED",
-    price: 25000,
-    caption: "Tersedia panas atau dingin. Air mineral terkontrol berpadu dengan shot espresso untuk body yang jernih.",
-    image_url: createEditorialSvg("Americano Klasik", "Hot / Iced", "1/1"),
+    code: "TM-05",
+    name: "PAIN AU CHOCOLAT",
+    category: "PASTRY",
+    price: 26000,
+    caption: "French butter lamination 48 jam, Valrhona dark chocolate batons 55%",
+    images: ["/images/admin-tm05.jpg", "/images/hero-slide-02.jpg"],
+    image_url: "/images/admin-tm05.jpg",
     is_available: true,
     is_featured: false
   },
   {
     id: "menu-06",
-    name: "Piccolo Latte",
-    category: "ESPRESSO BASED",
-    price: 26000,
-    caption: "Konsentrasi rasa kopi intens dengan lapisan mikro-foam susu bersuhu 60°C dalam porsi 100ml.",
-    image_url: createEditorialSvg("Piccolo Latte", "Dense Microfoam", "1/1"),
-    is_available: true,
+    code: "TM-06",
+    name: "MATCHA KYOTO",
+    category: "NON-COFFEE",
+    price: 30000,
+    caption: "Uji Ceremonial Grade Matcha, steamed fresh milk, cane sugar",
+    images: ["/images/admin-tm06.jpg", "/images/admin-tm01.jpg"],
+    image_url: "/images/admin-tm06.jpg",
+    is_available: false,
     is_featured: false
   },
   {
     id: "menu-07",
-    name: "Uji Matcha Ceremonial",
-    category: "NON-COFFEE",
+    code: "TM-07",
+    name: "NITRO COLD BREW CITRUS",
+    category: "SIGNATURE",
     price: 32000,
-    caption: "Teh hijau ceremonial grade asal Uji, Kyoto. Dikocok dengan chasen bambu dan dipadukan susu murni segar.",
-    image_url: createEditorialSvg("Uji Matcha", "Kyoto Import", "1/1"),
+    caption: "Ekstraksi dingin 18 jam dengan infusi nitrogen mikro. Profil sitrus jernih dengan buih krem tebal.",
+    images: [createEditorialSvg("Nitro Cold Brew", "18-Hour Brew", "1/1")],
+    image_url: createEditorialSvg("Nitro Cold Brew", "18-Hour Brew", "1/1"),
     is_available: true,
     is_featured: true
   },
   {
     id: "menu-08",
-    name: "Artisan Earl Grey",
-    category: "NON-COFFEE",
-    price: 24000,
-    caption: "Seduhan daun teh hitam Ceylon berkualitas tinggi dengan minyak bergamot Italia dan kelopak bunga biru.",
-    image_url: createEditorialSvg("Artisan Earl Grey", "Ceylon Bergamot", "1/1"),
+    code: "TM-08",
+    name: "DOUBLE ESPRESSO GAYO",
+    category: "ESPRESSO",
+    price: 22000,
+    caption: "Ekstraksi rasio 1:2 dari biji kopi arabika Gayo anaerobik. Catatan rasa kakao pekat dan kismis.",
+    images: [createEditorialSvg("Double Espresso", "Gayo Anaerobic", "1/1")],
+    image_url: createEditorialSvg("Double Espresso", "Gayo Anaerobic", "1/1"),
     is_available: true,
     is_featured: false
   },
   {
     id: "menu-09",
-    name: "Cokelat Hitam Tabanan",
-    category: "NON-COFFEE",
+    code: "TM-09",
+    name: "FLAT WHITE 6OZ",
+    category: "ESPRESSO",
     price: 28000,
-    caption: "Kakao 70% asal perkebunan organik Tabanan, Bali. Rasa cokelat legit dengan keasaman buah alami.",
-    image_url: createEditorialSvg("Cokelat Tabanan", "70% Dark Cocoa", "1/1"),
+    caption: "Ristretto ganda dilapisi microfoam susu kukus halus tanpa buih tebal. Rasa kopi intens berkarakter manis.",
+    images: [createEditorialSvg("Flat White", "Microfoam 6oz", "1/1")],
+    image_url: createEditorialSvg("Flat White", "Microfoam 6oz", "1/1"),
     is_available: true,
     is_featured: false
   },
   {
     id: "menu-10",
-    name: "Butter Croissant Klasik",
-    category: "PASTRY",
-    price: 25000,
-    caption: "Adonan beragi berlapis mentega Prancis murni. Renyah di luar dan berongga honeycomb sempurna di dalam.",
-    image_url: createEditorialSvg("Butter Croissant", "French Butter", "1/1"),
+    code: "TM-10",
+    name: "V60 ETHIOPIA YIRGACHEFFE",
+    category: "MANUAL",
+    price: 38000,
+    caption: "Washed process Yirgacheffe G1, rasa teh earl grey, floral melati, dan aprikot segar.",
+    images: [createEditorialSvg("Pour Over V60", "Ethiopia Yirgacheffe", "1/1")],
+    image_url: createEditorialSvg("Pour Over V60", "Ethiopia Yirgacheffe", "1/1"),
     is_available: true,
     is_featured: false
   },
   {
     id: "menu-11",
-    name: "Pain Au Chocolat",
+    code: "TM-11",
+    name: "BUTTER CROISSANT KLASIK",
     category: "PASTRY",
-    price: 28000,
-    caption: "Dua batang cokelat Belgia pekat terbalut pastry renyah gurih. Dipanggang segar setiap pagi pukul 06:30.",
-    image_url: createEditorialSvg("Pain Au Chocolat", "Belgian Chocolate", "1/1"),
-    is_available: false,
+    price: 24000,
+    caption: "Adonan beragi berlapis mentega Prancis murni. Renyah di luar dan berongga honeycomb sempurna di dalam.",
+    images: [createEditorialSvg("Butter Croissant", "French Butter", "1/1")],
+    image_url: createEditorialSvg("Butter Croissant", "French Butter", "1/1"),
+    is_available: true,
     is_featured: false
   },
   {
     id: "menu-12",
-    name: "Almond Kouign-Amann",
-    category: "PASTRY",
-    price: 30000,
-    caption: "Kue tradisional Breton dengan lapisan gula terkaramelisasi renyah dan taburan kacang almond sangrai gurih.",
-    image_url: createEditorialSvg("Almond Kouign-Amann", "Caramelized Crisp", "1/1"),
+    code: "TM-12",
+    name: "CASCARA LEMONADE",
+    category: "NON-COFFEE",
+    price: 26000,
+    caption: "Seduhan kulit ceri kopi kering pilihan berpadu dengan perasan lemon segar dan soda berkarbonasi ringan.",
+    images: [createEditorialSvg("Cascara Lemonade", "Coffee Cherry Fizz", "1/1")],
+    image_url: createEditorialSvg("Cascara Lemonade", "Coffee Cherry Fizz", "1/1"),
     is_available: true,
     is_featured: false
   }
@@ -173,38 +268,123 @@ export const DEFAULT_MENU_ITEMS = [
 export const DEFAULT_HISTORY_STORIES = [
   {
     id: "hist-01",
-    title: "Meja Kayu Pertama di Sudut Jalan",
-    story_date: "2021 // AWAL MULA",
-    caption: "Dimulai dari sebuah meja kayu tua berukuran 120x60 sentimeter dan satu mesin espresso manual. Kami percaya bahwa secangkir kopi bukan sekadar asupan kafein, melainkan sebuah jeda dan titik temu bagi ide-ide yang belum selesai diutarakan di tengah deru kota.",
-    image_url: createEditorialSvg("Meja Kayu Pertama", "Dokumentasi 2021", "3/4"),
+    story_date: "2021 // EKSPEDISI PERTAMA",
+    figure_label: "FIG. 01 / GAYO",
+    title: "PENELUSURAN BIJI TUNGGAL & STANDARISASI SANGRAI",
+    caption: "Membangun relasi langsung dengan petani mandiri di dataran tinggi Gayo dan Temanggung tanpa perantara komersial. Kami mencatat lebih dari 400 profil sangrai untuk menemukan titik manis ekstraksi.",
+    protocolNote: "CATATAN PROTOKOL: #001-CUPPING",
+    sampleNote: "SAMPLE TESTED: 62 PROVINSI",
+    images: ["/images/admin-hist01.jpg", "/images/history-01.jpg"],
+    image_url: "/images/admin-hist01.jpg",
     display_order: 1,
     is_published: true
   },
   {
     id: "hist-02",
-    title: "Eksperimen Sangrai Mandiri",
-    story_date: "2022 // RITUAL PAGI",
-    caption: "Menemukan profil sangrai yang tepat membutuhkan ratusan cangkir uji coba dan puluhan kurva temperatur. Kami memutuskan untuk bermitra langsung dengan petani di dataran tinggi Bajawa dan Gayo, memastikan setiap butir ceri merah dipetik pada puncak kematangannya.",
-    image_url: createEditorialSvg("Sangrai Mandiri", "Uji Coba Profil Rasa", "3/4"),
+    story_date: "2023 // MERACIK RUANG BERSAMA",
+    figure_label: "FIG. 02 / RUANG",
+    title: "ARSITEKTUR BRUTALIS SEBAGAI TEMPAT DISKUSI TERBUKA",
+    caption: "Membuka gerai pertama dengan konsep ruang komunal monokromatik tanpa dekorasi berlebih untuk fokus pada dialog rasa. Dinding beton ekspos dan bangku baja berpadu mendukung percakapan urban.",
+    protocolNote: "ARSITEK: STUDIO FORM-FUNCTION",
+    sampleNote: "MATERIAL: BETON 300MPA & BAJA SUS 304",
+    images: ["/images/admin-hist02.jpg", "/images/history-02.jpg"],
+    image_url: "/images/admin-hist02.jpg",
     display_order: 2,
     is_published: true
   },
   {
     id: "hist-03",
-    title: "Temu Tanpa Sekat",
-    story_date: "2023 // RUANG KOMUNITAS",
-    caption: "Meruntuhkan dinding pembatas fisik agar aroma seduhan kopi dan obrolan mengalir bebas. Di sini, pengunjung tidak hanya singgah untuk minum, melainkan menaruh cerita, bertukar buku, dan merajut kolaborasi lintas disiplin tanpa ada sekat formalitas.",
-    image_url: createEditorialSvg("Temu Tanpa Sekat", "Arsip Komunitas", "3/4"),
+    story_date: "2025 // STATUS SEKARANG",
+    figure_label: "FIG. 03 / DIGITAL",
+    title: "TRANSPARANSI PROVENANSI 100% TERBUKA",
+    caption: "Penerapan kode batch digital pada setiap cangkir untuk melihat nama roaster, tanggal roast, dan data refractometer TDS. Setiap lot biji dapat dilacak sampai ke ketinggian kebun tanam.",
+    protocolNote: "KODE VERIFIKASI: #TM-2025-PROV",
+    sampleNote: "DOKUMEN BIJI: TERBUKA",
+    images: ["/images/hero-slide-02.jpg", "/images/admin-hist01.jpg"],
+    image_url: "/images/hero-slide-02.jpg",
     display_order: 3,
-    is_published: true
+    is_published: false
   }
 ];
 
-export const CATEGORIES = [
-  "ALL",
+export const DEFAULT_BEAN_BATCHES = [
+  {
+    id: "batch-01",
+    lotCode: "LOT-GAYO-2025A",
+    origin: "Aceh Gayo, Takengon (1.600m DPL)",
+    variety: "Ateng Super, TimTim",
+    process: "Full Washed Double Soaking",
+    roastDate: "2025-10-24",
+    roastProfile: "Medium Light (DTR 14.2%)",
+    tdsTarget: "1.38% TDS @ 93.4°C",
+    stockKg: 18.5,
+    status: "READY TO BREW",
+    cuppingScore: 88.5
+  },
+  {
+    id: "batch-02",
+    lotCode: "LOT-PANAMA-GEISHA",
+    origin: "Boquete, Chiriqui (1.850m DPL)",
+    variety: "Green Tip Geisha",
+    process: "Anaerobic Slow Natural 72H",
+    roastDate: "2025-10-22",
+    roastProfile: "Light Cinnamon (DTR 12.8%)",
+    tdsTarget: "1.32% TDS @ 92.0°C",
+    stockKg: 6.2,
+    status: "OPTIMAL RESTING",
+    cuppingScore: 92.0
+  },
+  {
+    id: "batch-03",
+    lotCode: "LOT-KERINCI-NAT",
+    origin: "Kayu Aro, Jambi (1.500m DPL)",
+    variety: "Andung Sari, Sigararutang",
+    process: "Lactic Natural Fermentation",
+    roastDate: "2025-10-25",
+    roastProfile: "Medium Filter (DTR 14.8%)",
+    tdsTarget: "1.40% TDS @ 93.0°C",
+    stockKg: 24.0,
+    status: "READY TO BREW",
+    cuppingScore: 87.75
+  },
+  {
+    id: "batch-04",
+    lotCode: "LOT-FLORES-BAJAWA",
+    origin: "Bajawa, Ngada NTT (1.400m DPL)",
+    variety: "Kartika, S-795",
+    process: "Wet Hulled Traditional Giling Basah",
+    roastDate: "2025-10-20",
+    roastProfile: "Medium Dark Espresso (DTR 16.5%)",
+    tdsTarget: "9.5% TDS Espresso 1:2",
+    stockKg: 32.0,
+    status: "READY TO BREW",
+    cuppingScore: 86.5
+  },
+  {
+    id: "batch-05",
+    lotCode: "LOT-TEMANGGUNG-ROB",
+    origin: "Candiroto, Temanggung (850m DPL)",
+    variety: "Robusta Clone BP 42",
+    process: "Honey Carbonic Maceration",
+    roastDate: "2025-10-18",
+    roastProfile: "Omni Roast House Blend",
+    tdsTarget: "Crema Booster Component",
+    stockKg: 12.0,
+    status: "LOW STOCK",
+    cuppingScore: 84.0
+  }
+];
+
+export const DEFAULT_RAW_CATEGORIES = [
   "SIGNATURE",
-  "ESPRESSO BASED",
+  "ESPRESSO",
+  "MANUAL",
+  "COLD EXTRACTION",
   "NON-COFFEE",
   "PASTRY"
 ];
 
+export const CATEGORIES = [
+  "ALL",
+  ...DEFAULT_RAW_CATEGORIES
+];
