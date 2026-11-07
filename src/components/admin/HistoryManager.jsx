@@ -172,14 +172,14 @@ export default function HistoryManager({
           <div className="flex items-center gap-2 mb-1">
             <span className="w-3 h-3 bg-primary inline-block"></span>
             <span className="font-tag-mono text-tag-mono tracking-widest text-primary uppercase font-bold">
-              DOKUMENTASI PUBLIK &amp; PROVENANSI
+              MODUL 02
             </span>
           </div>
           <h2 className="font-headline-md text-headline-md tracking-tight uppercase font-bold">
-            02 / MODUL MANAJEMEN ARSIP HISTORIS &amp; CERITA TEMU
+            Cerita / Historis
           </h2>
-          <p className="font-tag-mono text-tag-mono text-on-surface-variant mt-1 tracking-wider">
-            MANAJEMEN KONTEN HISTORIS DOKUMENTER ({activeStoriesCount} ENTRI AKTIF DITAMPILKAN DI LANDING PAGE)
+          <p className="font-body-sm text-body-sm text-on-surface-variant mt-1">
+            {activeStoriesCount} cerita sedang tayang di bagian “Cerita kami” pada beranda.
           </p>
         </div>
 

@@ -305,22 +305,19 @@ export default function MenuManager({
           <div className="flex items-center gap-2 mb-1">
             <span className="w-3 h-3 bg-[#0047FF] inline-block"></span>
             <span className="font-tag-mono text-tag-mono tracking-widest text-[#0047FF] uppercase font-bold">
-              MODUL UTAMA AKTIF // ARSIP INVENTARIS
+              MODUL 01
             </span>
           </div>
           <h1 className="font-headline-md text-headline-md tracking-tight uppercase font-bold">
-            01 / MODUL MANAJEMEN MENU & SAJIAN
+            Katalog Menu
           </h1>
-          <p className="font-tag-mono text-tag-mono text-on-surface-variant mt-1 tracking-wider">
-            LEDGER ID: #TM-CMS-MENU-2025 // SISTEM INVENTARISASI PRESISE SWISS INTERNATIONAL
+          <p className="font-body-sm text-body-sm text-on-surface-variant mt-1">
+            Tambah, ubah, dan tandai sajian yang habis. Perubahan langsung tampil di situs.
           </p>
         </div>
 
         <div className="flex items-center gap-2 font-tag-mono text-tag-mono">
-          <span className="px-2 py-1 bg-surface border border-primary font-bold">
-            FORMAT DATA: JSON-LEDGER
-          </span>
-          <button
+                    <button
             type="button"
             onClick={() => exportMenuToCsv(menuItems)}
             className="px-3 py-1 bg-ground hover:bg-primary hover:text-ground border border-primary flex items-center gap-1 font-bold"

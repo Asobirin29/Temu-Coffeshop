@@ -31,6 +31,25 @@ import {
   setAdminSession
 } from './services/storageService';
 
+function AdminPill({ onWorkspace, secondaryLabel, onSecondary, onLogout }) {
+  return (
+    <aside className="admin-floating-pill swiss-border-all" aria-label="Panel pintas admin">
+      <span className="pill-label" style={{ display: "inline-flex", alignItems: "center", fontWeight: 700 }}>
+        <span className="status-dot"></span>CMS AKTIF
+      </span>
+      <button type="button" onClick={onWorkspace} className="btn-swiss btn-accent" style={{ padding: "8px 12px", fontSize: "11px" }}>
+        Workspace ↗
+      </button>
+      <button type="button" onClick={onSecondary} className="btn-swiss" style={{ padding: "8px 12px", fontSize: "11px" }}>
+        {secondaryLabel}
+      </button>
+      <button type="button" onClick={onLogout} className="btn-swiss" style={{ padding: "8px 12px", fontSize: "11px", color: "var(--dp-color-signal-red)", borderColor: "var(--dp-color-signal-red)" }}>
+        Logout
+      </button>
+    </aside>
+  );
+}
+
 export default function App() {
   const [isAdmin, setIsAdmin] = useState(false);
   const [currentHash, setCurrentHash] = useState(window.location.hash || '#/');
@@ -275,7 +294,7 @@ export default function App() {
   // 2. Render Dedicated Menu Catalog Page (Separate View)
   if (isMenuPage) {
     return (
-      <div id="top">
+      <div id="top" className={isAdmin ? "has-admin-pill" : undefined}>
         <Header
           siteInfo={siteInfo}
           isAdmin={isAdmin}
@@ -304,42 +323,7 @@ export default function App() {
           onNavigateMenu={handleNavigateMenu}
         />
 
-        {/* Floating Control Bar for Authenticated Admin */}
-        {isAdmin && (
-          <aside 
-            className="admin-floating-pill swiss-border-all" 
-            aria-label="Panel Pintas Pengelola Kedai"
-          >
-            <span style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', fontWeight: 700 }}>
-              <span className="status-dot"></span>
-              CMS AKTIF
-            </span>
-            <button
-              type="button"
-              onClick={handleNavigateAdmin}
-              className="btn-swiss btn-accent"
-              style={{ padding: '6px 12px', fontSize: '11px' }}
-            >
-              BUKA WORKSPACE ↗
-            </button>
-            <button
-              type="button"
-              onClick={handleNavigatePublic}
-              className="btn-swiss"
-              style={{ padding: '6px 10px', fontSize: '11px', color: '#ffffff', backgroundColor: '#000000' }}
-            >
-              LIHAT BERANDA
-            </button>
-            <button
-              type="button"
-              onClick={handleLogout}
-              className="btn-swiss"
-              style={{ padding: '6px 10px', fontSize: '11px', color: '#888888', borderColor: '#444444' }}
-            >
-              LOGOUT
-            </button>
-          </aside>
-        )}
+        {isAdmin && <AdminPill onWorkspace={handleNavigateAdmin} secondaryLabel="Beranda" onSecondary={handleNavigatePublic} onLogout={handleLogout} />}
 
         <LoginModal
           isOpen={isLoginModalOpen}
@@ -354,7 +338,7 @@ export default function App() {
 
   // 3. Render Public Main Landing Page (No Menu Catalog embedded here!)
   return (
-    <div id="top">
+    <div id="top" className={isAdmin ? "has-admin-pill" : undefined}>
       <Header
         siteInfo={siteInfo}
         isAdmin={isAdmin}
@@ -379,69 +363,14 @@ export default function App() {
           siteInfo={siteInfo} 
         />
 
-        {/* Callout Section Menuju Katalog Menu Terpisah */}
-        <section 
-          className="swiss-border-b" 
-          style={{ 
-            backgroundColor: 'var(--dp-color-surface)', 
-            width: '100%' 
-          }}
-        >
-          <div className="swiss-grid">
-            <div 
-              className="swiss-border-r" 
-              style={{ 
-                gridColumn: 'span 4', 
-                padding: 'clamp(24px, 3vw, 40px)',
-                display: 'flex', 
-                flexDirection: 'column', 
-                justifyContent: 'space-between' 
-              }}
-            >
-              <div>
-                <div className="font-tag-mono text-tag-mono" style={{ color: 'var(--dp-color-accent)', fontWeight: 800, marginBottom: '8px' }}>
-                  [ 03 // HALAMAN TERPISAH ]
-                </div>
-                <h2 className="font-headline-md text-headline-md" style={{ marginBottom: '12px' }}>
-                  KATALOG LENGKAP MENU KEDAI
-                </h2>
-                <p className="font-body-sm text-body-sm" style={{ color: 'var(--dp-color-muted)', lineHeight: 1.6 }}>
-                  Daftar seluruh racikan minuman kopi, espresso, artisan tea, dan pastry harian disajikan secara terpisah pada halaman katalog menu khusus.
-                </p>
-              </div>
-            </div>
-
-            <div 
-              style={{ 
-                gridColumn: 'span 8', 
-                padding: 'clamp(24px, 3vw, 40px)', 
-                display: 'flex', 
-                alignItems: 'center', 
-                justifyContent: 'space-between',
-                gap: '24px',
-                flexWrap: 'wrap',
-                backgroundColor: 'var(--dp-color-ground)'
-              }}
-            >
-              <div>
-                <div className="font-headline-md text-headline-md" style={{ marginBottom: '6px' }}>
-                  ARSIP SAJIAN &amp; HARGA LENGKAP
-                </div>
-                <div className="font-tag-mono text-tag-mono" style={{ color: 'var(--dp-color-muted)' }}>
-                  {menuItems.length} SAJIAN TERDATA // STATUS KETERSEDIAAN REAL-TIME
-                </div>
-              </div>
-
-              <button
-                type="button"
-                onClick={handleNavigateMenu}
-                className="btn-swiss btn-accent"
-                style={{ padding: '16px 28px', fontSize: '13px', fontWeight: 800 }}
-              >
-                BUKA KATALOG MENU ↗
-              </button>
-            </div>
+        <section className="menu-band section-pad" aria-label="Katalog menu">
+          <div style={{ display: "flex", flexDirection: "column", gap: "14px" }}>
+            <span className="eyebrow"><span className="sq" />03 — Menu</span>
+            <h2 className="section-title">{menuItems.length} sajian, siap diseduh.</h2>
           </div>
+          <button type="button" onClick={handleNavigateMenu} className="btn-swiss btn-accent btn-lg">
+            Buka Katalog Menu ↗
+          </button>
         </section>
       </main>
 
@@ -453,42 +382,7 @@ export default function App() {
         onNavigateMenu={handleNavigateMenu}
       />
 
-      {/* Floating Control Bar for Authenticated Admin on Public Preview */}
-      {isAdmin && (
-        <aside 
-          className="admin-floating-pill swiss-border-all" 
-          aria-label="Panel Pintas Pengelola Kedai"
-        >
-          <span style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', fontWeight: 700 }}>
-            <span className="status-dot"></span>
-            CMS AKTIF
-          </span>
-          <button
-            type="button"
-            onClick={handleNavigateAdmin}
-            className="btn-swiss btn-accent"
-            style={{ padding: '6px 12px', fontSize: '11px' }}
-          >
-            BUKA WORKSPACE ↗
-          </button>
-          <button
-            type="button"
-            onClick={handleNavigateMenu}
-            className="btn-swiss"
-            style={{ padding: '6px 10px', fontSize: '11px', color: '#ffffff', backgroundColor: '#000000' }}
-          >
-            KATALOG MENU ↗
-          </button>
-          <button
-            type="button"
-            onClick={handleLogout}
-            className="btn-swiss"
-            style={{ padding: '6px 10px', fontSize: '11px', color: '#888888', borderColor: '#444444' }}
-          >
-            LOGOUT
-          </button>
-        </aside>
-      )}
+      {isAdmin && <AdminPill onWorkspace={handleNavigateAdmin} secondaryLabel="Menu" onSecondary={handleNavigateMenu} onLogout={handleLogout} />}
 
       <LoginModal
         isOpen={isLoginModalOpen}

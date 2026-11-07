@@ -58,47 +58,14 @@ export default function MenuCatalogPage({ menuItems, categories = [], siteInfo, 
 
   return (
     <div className="menu-catalog-page" style={{ width: '100%', backgroundColor: 'var(--dp-color-ground)' }}>
-      {/* Top Ledger: Breadcrumb & Return to Home */}
-      <div
-        className="swiss-border-b"
-        style={{
-          backgroundColor: 'var(--dp-color-surface)',
-          padding: '12px 24px',
-          display: 'flex',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-          flexWrap: 'wrap',
-          gap: '12px'
-        }}
-      >
-        <div style={{ display: 'flex', alignItems: 'center', gap: '12px', flexWrap: 'wrap' }}>
-          <button
-            type="button"
-            onClick={onNavigateHome}
-            className="btn-swiss"
-            style={{
-              padding: '6px 14px',
-              fontSize: '11px',
-              fontWeight: 800,
-              backgroundColor: 'var(--dp-color-ground)',
-              cursor: 'pointer'
-            }}
-          >
-            ← KEMBALI KE BERANDA UTAMA
-          </button>
-          <span className="font-tag-mono text-tag-mono" style={{ color: 'var(--dp-color-muted)' }}>
-            BERANDA // 03 KATALOG MENU TERPISAH
-          </span>
-        </div>
-
-        <div className="font-tag-mono text-tag-mono" style={{ display: 'flex', gap: '12px', alignItems: 'center' }}>
-          <span style={{ color: 'var(--dp-color-accent)', fontWeight: 800 }}>
-            [ ARSIP SAJIAN AKTIF ]
-          </span>
-          <span style={{ color: 'var(--dp-color-ink)', fontWeight: 700 }}>
-            {totalCount} TOTAL ({availableCount} TERSEDIA // {soldOutCount} HABIS)
-          </span>
-        </div>
+      {/* Top bar: back + count */}
+      <div className="swiss-border-b catalog-topbar">
+        <button type="button" onClick={onNavigateHome} className="btn-swiss" style={{ padding: '10px 14px', fontSize: '11px', fontWeight: 800 }}>
+          ← Beranda
+        </button>
+        <span className="font-tag-mono text-tag-mono">
+          {totalCount} sajian · <span style={{ color: 'var(--dp-color-accent)' }}>{availableCount} tersedia</span>
+        </span>
       </div>
 
       {/* Main 12-Column Swiss Grid */}
@@ -136,7 +103,7 @@ export default function MenuCatalogPage({ menuItems, categories = [], siteInfo, 
                 KATALOG MENU &amp; SAJIAN
               </h1>
             </div>
-            <p className="font-body-sm text-body-sm" style={{ color: 'var(--dp-color-muted)', lineHeight: 1.6 }}>
+            <p className="font-body-sm text-body-sm catalog-desktop-only" style={{ color: 'var(--dp-color-muted)', lineHeight: 1.6 }}>
               Seluruh biji kopi disangrai mingguan secara mikro (light-to-medium profile). Tidak menyajikan sirup artifisial; pemanis bersumber dari reduksi nira aren organik dan susu segar pasteurisasi harian.
             </p>
           </div>
@@ -148,7 +115,7 @@ export default function MenuCatalogPage({ menuItems, categories = [], siteInfo, 
               className="font-index-label text-index-label"
               style={{ display: 'block', marginBottom: '8px', color: 'var(--dp-color-ink)' }}
             >
-              PENCARIAN SAJIAN // BIJI:
+              CARI SAJIAN
             </label>
             <div style={{ display: 'flex', gap: '4px' }}>
               <input
@@ -216,9 +183,9 @@ export default function MenuCatalogPage({ menuItems, categories = [], siteInfo, 
           </div>
 
           {/* Category Filter Buttons */}
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
+          <div className="catalog-cats" style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
             <span className="font-index-label text-index-label" style={{ color: 'var(--dp-color-muted)', marginBottom: '4px' }}>
-              FILTER KATEGORI BERKAS:
+              KATEGORI:
             </span>
             {catalogCategories.map((cat) => {
               const countInCat = cat === 'ALL'
@@ -253,7 +220,7 @@ export default function MenuCatalogPage({ menuItems, categories = [], siteInfo, 
           </div>
 
           {/* Protokol Pemesanan Box */}
-          <div className="swiss-border-t" style={{ paddingTop: '20px' }}>
+          <div className="swiss-border-t catalog-desktop-only" style={{ paddingTop: '20px' }}>
             <span className="font-index-label text-index-label" style={{ marginBottom: '10px', color: 'var(--dp-color-muted)', display: 'block' }}>
               PROTOKOL PEMESANAN KEDAI
             </span>
@@ -275,7 +242,7 @@ export default function MenuCatalogPage({ menuItems, categories = [], siteInfo, 
           </div>
 
           {/* Navigation Action Back to Home */}
-          <div className="swiss-border-t" style={{ paddingTop: '16px' }}>
+          <div className="swiss-border-t catalog-desktop-only" style={{ paddingTop: '16px' }}>
             <button
               type="button"
               onClick={onNavigateHome}

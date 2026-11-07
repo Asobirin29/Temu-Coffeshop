@@ -60,14 +60,14 @@ export default function LandingInfoManager({ siteInfo, onUpdateInfo }) {
           <div className="flex items-center gap-2 mb-1">
             <span className="w-3 h-3 bg-[#0047FF] inline-block"></span>
             <span className="font-tag-mono text-tag-mono tracking-widest text-[#0047FF] uppercase font-bold">
-              KONTROL OPERASIONAL // LANDING PAGE METADATA
+              MODUL 03
             </span>
           </div>
           <h2 className="font-headline-md text-headline-md tracking-tight uppercase font-bold">
-            04 / PENGATURAN STATUS KEDAI &amp; LANDING PAGE
+            Status & Info Kedai
           </h2>
-          <p className="font-tag-mono text-tag-mono text-on-surface-variant mt-1 tracking-wider">
-            UBAH STATUS BUKA/TUTUP, JAM LAYANAN, ALAMAT, KONTAK RESMI &amp; TEKS MANIFESTO KEDAI
+          <p className="font-body-sm text-body-sm text-on-surface-variant mt-1">
+            Status buka/tutup, jam, alamat, kontak, dan teks utama di beranda.
           </p>
         </div>
 
@@ -134,21 +134,6 @@ export default function LandingInfoManager({ siteInfo, onUpdateInfo }) {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-space-md mb-space-md">
-            {/* Teks Status Saat Buka */}
-            <div className="flex flex-col gap-1.5">
-              <label className="font-index-label text-index-label uppercase">
-                TEKS STATUS SAAT BUKA *
-              </label>
-              <input
-                type="text"
-                className="w-full px-space-md py-2.5 bg-surface border-2 border-primary font-metadata-bold"
-                value={formData.statusText || ''}
-                onChange={(e) => handleChange('statusText', e.target.value)}
-                placeholder="SEDANG BUKA (OPEN)"
-                required
-              />
-            </div>
-
             {/* Teks Status Saat Tutup */}
             <div className="flex flex-col gap-1.5">
               <label className="font-index-label text-index-label uppercase">
@@ -179,35 +164,6 @@ export default function LandingInfoManager({ siteInfo, onUpdateInfo }) {
               />
             </div>
 
-            {/* Hari Layanan */}
-            <div className="flex flex-col gap-1.5">
-              <label className="font-index-label text-index-label uppercase">
-                KETERANGAN HARI OPERASIONAL *
-              </label>
-              <input
-                type="text"
-                className="w-full px-space-md py-2.5 bg-surface border-2 border-primary font-body-sm"
-                value={formData.openingDays || ''}
-                onChange={(e) => handleChange('openingDays', e.target.value)}
-                placeholder="Senin sampai Minggu tanpa libur"
-                required
-              />
-            </div>
-          </div>
-
-          {/* Catatan Sub-Status */}
-          <div className="flex flex-col gap-1.5">
-            <label className="font-index-label text-index-label uppercase">
-              CATATAN SUB-STATUS OPERASIONAL *
-            </label>
-            <input
-              type="text"
-              className="w-full px-space-md py-2.5 bg-surface border-2 border-primary font-body-sm"
-              value={formData.statusNote || ''}
-              onChange={(e) => handleChange('statusNote', e.target.value)}
-              placeholder="Pengarsipan profil sangrai berkala untuk menjaga kurva degradasi termal."
-              required
-            />
           </div>
         </fieldset>
 
@@ -309,20 +265,6 @@ export default function LandingInfoManager({ siteInfo, onUpdateInfo }) {
                 placeholder="@temu.coffeeshop"
               />
             </div>
-
-            {/* Koordinat GPS */}
-            <div className="flex flex-col gap-1.5">
-              <label className="font-index-label text-index-label uppercase">
-                KOORDINAT GPS PRESISI
-              </label>
-              <input
-                type="text"
-                className="w-full px-space-md py-2.5 bg-surface border-2 border-primary font-body-sm font-tag-mono"
-                value={formData.coordinates || ''}
-                onChange={(e) => handleChange('coordinates', e.target.value)}
-                placeholder={`6°14'02.1"S 106°48'33.2"E`}
-              />
-            </div>
           </div>
         </fieldset>
 
@@ -335,21 +277,7 @@ export default function LandingInfoManager({ siteInfo, onUpdateInfo }) {
             [ 03 // HERO SECTION &amp; FILOSOFI KEDAI ]
           </legend>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-space-md mb-space-md mt-2">
-            {/* Tag Section Hero */}
-            <div className="flex flex-col gap-1.5">
-              <label className="font-index-label text-index-label uppercase">
-                LABEL PENANDA HERO (SECTION TAG)
-              </label>
-              <input
-                type="text"
-                className="w-full px-space-md py-2.5 bg-surface border-2 border-primary font-tag-mono text-tag-mono"
-                value={formData.heroSectionTag || ''}
-                onChange={(e) => handleChange('heroSectionTag', e.target.value)}
-                placeholder="ARSIP PROTOKOL KOPI // SENOPATI"
-              />
-            </div>
-
+          <div className="grid grid-cols-1 gap-space-md mb-space-md mt-2">
             {/* Judul Hero Besar */}
             <div className="flex flex-col gap-1.5">
               <label className="font-index-label text-index-label uppercase">
